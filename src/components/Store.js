@@ -85,7 +85,8 @@ class Store extends Component {
 		//let live_tests = Object.values(dummy_data);
 		let live_tests = dummy_data;
 		//console.log(live_tests);
-		this.setState(this.state.live_tests = Object.assign(live_tests));
+        this.setState(this.state.live_tests = Object.assign(live_tests));
+        this.setState(this.state.current_tests = Object.assign(live_tests));
 		//console.log(this.state);
 		let totalTests = this.state.live_tests.length;
 		this.setState({totalTests});
