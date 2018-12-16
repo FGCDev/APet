@@ -1,0 +1,48 @@
+.NavBar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 2vmin;
+    background-color: #f9f9f9;
+    position: relative;	
+    box-shadow: 1px 4px 6px 1px #CCCCCC;
+}
+.logo {
+    width: 20%;
+    max-width: 20%;
+    height: 100%;
+    font-size: 2vmin;
+    flex-wrap: wrap;
+    margin-inline-start: 1%;
+}
+
+.links {
+    display: flex;
+    margin: 0px 8px;
+    width: 60%;
+    justify-content: flex-end;
+    align-items: flex-start;
+    flex-grow: 1;
+    background-color: azure;
+}
+
+.links-list {
+    display: flex; 
+    list-style: none;
+    background-color: beige;
+    justify-content: space-evenly;
+}
+.links-list li {
+    margin: 0px 8px ;
+}
+
+.profile {
+    display: flex;
+    background-color: #2D65FF;
+    color: azure;
+    width: 20%;
+    
+}
+.profile p {
+    margin: 2vmin 8px;
+}

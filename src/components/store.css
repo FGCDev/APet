@@ -1,0 +1,92 @@
+.Store {
+    display: flex;
+    width: 100vw;
+}
+
+.Store-Controls {
+    padding-inline-start: 2%;
+    display: flex;
+    flex-direction: column;
+    flex: 0;
+    min-width: 180px;
+    max-width: 20vw;
+    /* height: 90vh; */
+    background: #ffffff;
+    font-size:  2vmin;
+    position: relative;	
+    align-items: flex-start;
+    z-index: 10;
+    box-shadow: 1px 1px 2px 1px #CCCCCC;
+}
+
+.Store-Controls div {
+    align-items: inherit;
+    text-align: start;
+}
+
+.Store-Controls div p {
+    font-size: 1.5vmin;
+}
+
+.Store-Results {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    background: #fcfcfc;
+    width: 70vw;
+    height: 90vh;
+    margin: 8px 4px;
+    justify-content: auto;
+    align-items: center;
+    
+}
+
+.Store-Results-Container {
+    display: flex;
+    overflow-y: scroll;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.Card {
+    width: 25vh;
+    height: 30vh;
+    margin: 4px;
+    font-size: 2vmax;
+    background: #ffffff;
+    overflow-wrap: break-word;
+    position: relative;	
+    border-radius: 1vmin;
+    z-index: 10;
+    box-shadow: 1px 2px 2px 1px #CCCCCC69;
+}
+.red {
+    background: coral;
+}
+
+ul.pagination {
+    margin-top: 0;
+    margin-bottom: 0;
+    list-style: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+ul.pagination li.page-item.active a.page-link {
+    color: #445565 !important;
+    background-color: #e3e7eb !important;
+    border-color: #ced4da !important;
+}
+ul.pagination a.page-link {
+    padding: 0.75rem 1rem;
+    min-width: 3.5rem;
+    text-align: center;
+    box-shadow: none !important;
+    border-color: #ced4da !important;
+    color: #6b88a4;
+    font-weight: 900;
+    font-size: 1rem;
+}
+ul.pagination a.page-link:hover {
+    background-color: #f4f4f4;
+}
+  
