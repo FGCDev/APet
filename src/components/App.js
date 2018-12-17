@@ -12,6 +12,7 @@ import {
 
 import NavBar from './NavBar';
 import Store from './Store';
+import EB from './ErrorBoundary';
 
 const Landing = ({ match }) => {
   //const location = props.match.path;
@@ -90,10 +91,11 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <NavBar />
+        <EB> <NavBar /> </EB>
+          
         </header>
         <main className="App-vp">
-          <Switch>
+          <EB><Switch>
             {routes.map((route) => (
               <Route
                 key={route.path}
@@ -102,7 +104,7 @@ class App extends Component {
                 component={route.component} //render={(props) => <Comp {...props} /*Pass Any Additional Props*/ />}
               />
             ))}
-          </Switch>
+          </Switch> </EB>
         </main>
       </div>
     );

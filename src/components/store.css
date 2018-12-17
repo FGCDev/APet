@@ -30,20 +30,29 @@
 
 .Store-Results {
     display: flex;
-    flex: 1;
     flex-direction: column;
     background: #fcfcfc;
-    width: 70vw;
-    height: 90vh;
+    width: 80vw;
+    height: 88vh;
     margin: 8px 4px;
     justify-content: auto;
     align-items: center;
-    
+}
+.Pager {
+    /* display: flex;
+    width: inherit;
+    height: inherit;
+    flex: 1;
+    width: 80vw;
+    height: 90vh;
+    flex-direction: column;
+    align-content: center;
+    justify-content: auto; */
 }
 
 .Store-Results-Container {
     display: flex;
-    overflow-y: scroll;
+    overflow-y: auto;
     flex-wrap: wrap;
     justify-content: center;
     align-items: flex-start;
