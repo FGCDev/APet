@@ -21,12 +21,12 @@ export class Pager extends Component {
 		const { msg } = this.state
 
 		return (
-			<React.Fragment>
-				{this.props.children(this.state.current_list)}
-				<div className={styleClass}>
+			<div style={{display: 'flex', flexDirection:'column', alignItems: 'center', width: 'inherit'}} className="Store-Results-Controller">
+				{ this.props.children(this.state.current_list) }
+				< div className = { styleClass } >
 					<h3>{msg}</h3>
-				</div>
-			</React.Fragment>
+				</div >
+			</div >
 		)
 	}
 }

@@ -46,7 +46,7 @@ export class StoreResults extends PureComponent {
 	//Method Space ends
 
   render() {
-    let stylingClasses = "Store-Results ";
+    let stylingClasses = "Store-Results-Component ";
 		if (this.props.style) stylingClasses = stylingClasses.concat(this.props.style)
 				// const headerClass = [
 				// 	// "text-dark py-2 pr-4 m-0",
@@ -64,7 +64,7 @@ export class StoreResults extends PureComponent {
 		<div className={stylingClasses}>
 			<h3>Showing Results for: {}</h3>
 			<EB>
-			<div className="Store-Results-Container">
+			<div className="Store-Results-List">
 				{this.props.results.map((test) =>
 					<Card
 					key={test.id} 
