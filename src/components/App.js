@@ -1,4 +1,4 @@
-import React, { Component, Lazy, Suspense } from 'react';
+import React, { Component, lazy, Suspense } from 'react';
 // import logo from './logo.svg';
 import './App.css';
 
@@ -11,8 +11,10 @@ import {
 } from 'react-router-dom';
 
 import NavBar from './NavBar';
-import Store from './Store';
+// import Store from './Store';
 import EB from './ErrorBoundary';
+
+const Store = lazy(() => import('./Store'));
 
 const Landing = ({ match }) => {
   //const location = props.match.path;
@@ -61,7 +63,7 @@ const routes = [
   {
     path: '/store',
     exact: true,
-    component: Store
+    component: () => <Suspense fallback={(<h5>Loading...</h5>)}><Store /></Suspense>
   },
   {
     path: '/user',

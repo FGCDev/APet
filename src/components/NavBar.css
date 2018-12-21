@@ -12,9 +12,8 @@
     width: 20%;
     min-width: 20vh;
     height: 100%;
-    font-size: 2vmin;
-    flex-wrap: wrap;
-    margin-inline-start: 1%;
+    max-height: 68px;
+    margin-inline-start: 1vh;
 }
 
 .links-container {

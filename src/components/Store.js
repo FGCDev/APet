@@ -1,4 +1,4 @@
-import React, { Component, Lazy, Suspense } from 'react';
+import React, { Component, lazy, Suspense } from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {
@@ -18,7 +18,7 @@ import EB from './ErrorBoundary';
 import Pager from './Pager';
 
 //Lazy Components
-const Results = React.lazy(() => import('./StoreResults'));
+const Results = lazy(() => import('./StoreResults'));
 
 
 //Main Class
