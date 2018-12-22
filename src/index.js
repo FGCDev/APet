@@ -13,14 +13,22 @@ import { BrowserRouter } from 'react-router-dom';
 const store = createStore(reducer, middleware)
 
 ReactDOM.render(
-    <React.StrictMode>
-        <Provider store={store}>  
+        <Provider store={store}>
             <BrowserRouter>
                 <App />
-            </BrowserRouter>    
-        </Provider>
-    </React.StrictMode>, 
+            </BrowserRouter>
+        </Provider>,
     document.getElementById('root'));
+
+// ReactDOM.render(
+//     <React.StrictMode>
+//         <Provider store={store}>
+//             <BrowserRouter>
+//                 <App />
+//             </BrowserRouter>
+//         </Provider>
+//     </React.StrictMode>,
+//     document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

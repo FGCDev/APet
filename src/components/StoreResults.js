@@ -1,13 +1,14 @@
-import React, { PureComponent } from 'react'
+import React, { Suspense, PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import {
 	NavLink,
 	withRouter
 } from 'react-router-dom';
-
+import { Img } from 'the-platform';
 
 import EB from './ErrorBoundary';
+import Loader from './Loader';
 
 const Card = (props) => {
 	let classy = "Card ";
@@ -16,7 +17,9 @@ const Card = (props) => {
 	return (
 		<div className={classy}>
 			<div style={{ height: '28vh' }}>
-				<img src={props.cover} alt="Cover of the book" />
+				<Suspense fallback={(<Loader className="previewtext" text="Getting Your Image" />)}>
+					<Img className="loaded" src={props.cover} alt="Cover of the book" />
+				</Suspense>
 			</div>
 			<div className={classyinfo}>
 				<h4>{props.title}</h4>

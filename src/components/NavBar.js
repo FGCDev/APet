@@ -6,22 +6,23 @@ import './NavBar.css';
 import logo from '../res/imgs/ap_logo_inv.png';
 import dummy_img from '../res/imgs/Champ_Small.png';
 
-const Profile = () => {
-	return (
-		<React.Fragment>
-			<div className="dpcontainer">
-				<Suspense fallback={(<p>Getting avatar...</p>)}>
-					<img className="dp" src={dummy_img} alt="user's avatar is shown here" />
-				</Suspense>
-			</div>
+import Profile from './Profiler';
+// const Profile = () => {
+// 	return (
+// 		<React.Fragment>
+// 			<div className="dpcontainer">
+// 				<Suspense fallback={(<p>Getting avatar...</p>)}>
+// 					<img className="dp" src={dummy_img} alt="user's avatar is shown here" />
+// 				</Suspense>
+// 			</div>
 
-			<div className="profile-info">
-				<h3>Johnathan Doe</h3> 
-				<h4>Class XI</h4>
-			</div>
-		</React.Fragment>
-	);
-};
+// 			<div className="profile-info">
+// 				<h3>Johnathan Doe</h3> 
+// 				<h4>Class XI</h4>
+// 			</div>
+// 		</React.Fragment>
+// 	);
+// };
 
 class NavBar extends Component {
 
