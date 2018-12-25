@@ -29,7 +29,7 @@ export class Loader extends Component {
   
   render() {
     return (
-      <div style={{display: 'flex', alignItems: 'centre', justifyContent: 'space-around'}}>
+      <div style={{display: 'flex', alignItems: 'centre', justifyContent: 'space-around', fontSize: '2vh', padding: '4vh'}}>
         <h5>{this.state.text}</h5>
       </div>
     )

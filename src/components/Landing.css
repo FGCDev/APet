@@ -1,0 +1,28 @@
+.Hero {
+    height: 90vh;
+}
+
+.Hero.Background {
+    height: 90vh;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 88%, 50% 100%, 0 88%);
+}
+
+.Why {
+    height: 90vh;
+}
+
+.How {
+    height: 90vh;
+}
+
+.What {
+    height: 90vh;
+}
+
+.Features {
+    height: 90vh;
+}
+
+.Footer {
+    height: 50vh;
+}

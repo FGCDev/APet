@@ -1,14 +1,16 @@
 import React, { Component, lazy, Suspense } from 'react';
-import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
+import propTypes from 'prop-types';
+import { connect } from 'react-redux';
 import {
-  NavLink,
-  Switch,
-  Route, 
-  withRouter
+	NavLink,
+	Switch,
+	Route,
+	withRouter
 } from 'react-router-dom';
+
 //Assets
 // import logo from './logo.svg';
+import './NavBar.css';
 import './Store.css';
 import dummy_data from '../res/dummy-test-store';
 
@@ -17,6 +19,38 @@ import dummy_data from '../res/dummy-test-store';
 import EB from './ErrorBoundary';
 import Pager from './Pager';
 
+
+import logo from '../res/imgs/ap_logo_inv.png';
+
+
+import Profile from './Profiler';
+
+const profile = (
+	<div className="profile">
+		<Profile />
+	</div>
+);
+
+
+const NavBar = props => {
+	return (
+		<div className="NavBar">
+			<img className="logo" src={logo} alt="Logo for Aditya Publication © 2018" />
+			<div className="links-container">
+				<ul className="links-list">
+					<li><NavLink className="Link" to="/">Home</NavLink></li>
+					<li><NavLink className="Link" to="/landed">Landing</NavLink></li>
+					<li><NavLink className="Link" to="/store">Store</NavLink></li>
+				</ul>
+			</div>
+			{profile}
+		</div>
+	)
+}
+
+NavBar.propTypes = {
+
+}
 //Lazy Components
 const Results = lazy(() => import('./StoreResults'));
 
@@ -28,8 +62,8 @@ class Store extends Component {
 
 	//################################ Method Space ################################
 	//################################ LifeCycleMethods ################################
-  componentDidMount(){
-    //Load Init data.
+	componentDidMount() {
+		//Load Init data.
 		console.log(this.state);
 	}
 	//################################ Cutom Methods ################################
@@ -43,7 +77,7 @@ class Store extends Component {
 	};
 	//################################xXxXxXxXxXxX Method Space Ends XxXxXxXxXxXx################################
 
-  render(props) {
+	render(props) {
 		//const match = this.props.match;
 		let {
 			showControls:
@@ -55,12 +89,12 @@ class Store extends Component {
 		} = this.state;
 		//const totalTests = live_tests.length;
 		let controller = this.state.showControls && (<EB>
-		<div className="Store-Controls">
-			<div>
+			<div className="Store-Controls">
+				<div>
 					<h4 >Seach </h4>
-					<input style={{width: '14vh', height: '4vh', backgroundColor: '#eeeeee', padding: '2px', color: '#2D65FF', fontFamily: 'Roboto', fontWeight: '700'}} type='text' placeholder="Enter Query Here"/>
-			</div>
-			<div>
+					<input style={{ width: '14vh', height: '4vh', backgroundColor: '#eeeeee', padding: '2px', color: '#2D65FF', fontFamily: 'Roboto', fontWeight: '700' }} type='text' placeholder="Enter Query Here" />
+				</div>
+				<div>
 					<h4>Filter Search</h4>
 					<p>Recommended Tests</p>
 					<p>No. of Questions</p>
@@ -69,42 +103,45 @@ class Store extends Component {
 					<p>Test Duration</p>
 					<p>Question Types</p>
 					<p>Test Patterns</p>
-			</div>
-			<div>
+				</div>
+				<div>
 					<h4>Sort Results</h4>
 					<p>Num Questions</p>
 					<p>Difficulty</p>
 					<p>Price</p>
-			</div>
-			I control Stuff <br /> *evil laugh*
+				</div>
+				I control Stuff <br /> *evil laugh*
 		</div>
 		</EB>);
-		
-    return (
-			<div className="Store">
-			{controller}
-			
-			<Suspense fallback={(<h3>Loading Results...</h3>)}>
-			<EB>
-				{ current_tests && <Pager data={current_tests}>
-						{paging => (
-							<React.Fragment>
-								<Results results={paging}/>
-							</React.Fragment>
-						)}
-					</Pager>}
-			</EB>
-			</Suspense>
-      </div>
-    );
-  }
+
+		return (
+			<React.Fragment>
+				<EB><NavBar /></EB>
+				<div className="Store">
+					{controller}
+
+					<Suspense fallback={(<h3>Loading Results...</h3>)}>
+						<EB>
+							{current_tests && <Pager data={current_tests}>
+								{paging => (
+									<React.Fragment>
+										<Results results={paging} />
+									</React.Fragment>
+								)}
+							</Pager>}
+						</EB>
+					</Suspense>
+				</div>
+			</React.Fragment>
+		);
+	}
 }
 
 const mapStateToProps = state => {
-  //Stuff
-  return {
-    
-  };
+	//Stuff
+	return {
+
+	};
 };
 //export default connect()(App);
 export default withRouter(connect(mapStateToProps)(Store));
