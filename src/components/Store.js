@@ -91,7 +91,7 @@ class Store extends Component {
 		let controller = this.state.showControls && (<EB>
 			<div className="Store-Controls">
 				<div>
-					<h4 >Seach </h4>
+					<h4 >Search </h4>
 					<input style={{ width: '14vh', height: '4vh', backgroundColor: '#eeeeee', padding: '2px', color: '#2D65FF', fontFamily: 'Roboto', fontWeight: '700' }} type='text' placeholder="Enter Query Here" />
 				</div>
 				<div>

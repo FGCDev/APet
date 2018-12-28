@@ -1,6 +1,6 @@
 import React, { Component, Suspense } from 'react'
 import PropTypes from 'prop-types'
-import Img from 'the-platform';
+import { Img } from 'the-platform';
 import { NavLink/*, withRouter*/ } from 'react-router-dom';
 
 import './NavBar.css';
@@ -12,16 +12,20 @@ import land1 from '../res/imgs/land1.jpg';
 import Profile from './Profiler';
 import Loader from './Loader';
 
+const heropath = "https://raw.githubusercontent.com/FGCDev/APet/master/src/res/imgs/hero.jpg";
+const land1parth = "https://raw.githubusercontent.com/FGCDev/APet/master/src/res/imgs/land1.jpg";
+const land2parth = "https://raw.githubusercontent.com/FGCDev/APet/master/src/res/imgs/land1.jpg";
+const land3parth = "https://raw.githubusercontent.com/FGCDev/APet/master/src/res/imgs/land1.jpg";
+
 const profile = (
   <div className="profile">
     <Profile />
   </div>
 );
 
-
 const NavBar = props => {
   return (
-    <div className="NavBar">
+    <div className="NavBar Landing">
       <img className="logo" src={logo} alt="Logo for Aditya Publication © 2018" />
       <div className="links-container">
         <ul className="links-list">
@@ -50,7 +54,7 @@ class Landing extends Component {
         <div className="Hero">
           <NavBar />
           <Suspense fallback={(<img className="loaded" src={ hero } alt="The mission of AP" />)}>
-					  <Img className="loaded" src={ hero } alt="The mission of AP" />
+					  <Img className="loaded" src={ heropath } alt="The mission of AP" />
 				  </Suspense>
         </div>
         <div className="Why">

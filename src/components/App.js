@@ -1,4 +1,6 @@
 import React, { Component, lazy, Suspense } from 'react';
+import throttle from 'lodash/throttle';
+
 // import logo from './logo.svg';
 import './App.css';
 
@@ -85,9 +87,22 @@ const routes = [
 
 
 class App extends Component {
+  state = {
+    isMobile: false
+  }
+
+  handleWindowResize = () => {
+    return throttle(() => {
+      this.setState({ isMobile: window.innerWidth < 480 })
+    }, 200);
+  }
 
   componentDidMount() {
-    //Load Init data.
+    window.addEventListener('resize', this.onWindowResize);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.onWindowResize);
   }
 
   render() {

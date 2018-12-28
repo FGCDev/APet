@@ -1,21 +1,31 @@
 .NavBar {
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
     display: flex;
-    max-width: 100vw;
-    min-width: 100vw;
+    width: 100vw;
     height: 8vh;
     max-height: 86px;
+    box-sizing: border-box;
     align-items: center;
     justify-content: space-between;
     font-size: 2vh;
     background-color: #2D65FF;
-    position: relative;	
-    box-shadow: 1px 1px 1px 1px #22222269;
-    box-sizing: border-box;
+    z-index: 100;
 }
+
+.Landing {
+    background-color: #2D65FF60;
+    color: #222222;
+    width: 100vw;
+    height: 8vh;
+    /* box-shadow: 1px 1px 1px 1px #22222200; */
+}
+
 .logo {
-    height: 100%;
+    height: inherit;
     max-height: 82px;
-    width: 16%;
     min-width: 16vh;
     padding: .6vh;
     box-sizing: border-box;
