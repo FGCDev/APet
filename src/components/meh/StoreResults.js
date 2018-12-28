@@ -7,8 +7,8 @@ import {
 } from 'react-router-dom';
 import { Img } from 'the-platform';
 
-import EB from './ErrorBoundary';
-import Loader from './Loader';
+import EB from '../helpers/ErrorBoundary';
+import Loader from '../helpers/Loader';
 
 const Card = (props) => {
 	let classy = "Card ";

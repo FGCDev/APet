@@ -13,11 +13,11 @@ import {
 } from 'react-router-dom';
 
 // import Store from './Store';
-import EB from './ErrorBoundary';
-import Loader from './Loader';
+import EB from './helpers/ErrorBoundary';
+import Loader from './helpers/Loader';
 
 const Landing = lazy(() => import('./Landing'));
-const Store = lazy(() => import('./Store'));
+const Store = lazy(() => import('./meh/Store'));
 
 // const Landing = ({ match }) => {
 //   //const location = props.match.path;

@@ -10,12 +10,12 @@ import land1 from '../res/imgs/land1.jpg';
 
 
 import Profile from './Profiler';
-import Loader from './Loader';
+import Loader from './helpers/Loader';
 
 const heropath = "https://raw.githubusercontent.com/FGCDev/APet/master/src/res/imgs/hero.jpg";
-const land1parth = "https://raw.githubusercontent.com/FGCDev/APet/master/src/res/imgs/land1.jpg";
-const land2parth = "https://raw.githubusercontent.com/FGCDev/APet/master/src/res/imgs/land1.jpg";
-const land3parth = "https://raw.githubusercontent.com/FGCDev/APet/master/src/res/imgs/land1.jpg";
+const land1path = "https://raw.githubusercontent.com/FGCDev/APet/master/src/res/imgs/land1.jpg";
+const land2path = "https://raw.githubusercontent.com/FGCDev/APet/master/src/res/imgs/land1.jpg";
+const land3path = "https://raw.githubusercontent.com/FGCDev/APet/master/src/res/imgs/land1.jpg";
 
 const profile = (
   <div className="profile">

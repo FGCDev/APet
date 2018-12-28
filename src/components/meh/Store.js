@@ -10,20 +10,20 @@ import {
 
 //Assets
 // import logo from './logo.svg';
-import './NavBar.css';
+import '../NavBar.css';
 import './Store.css';
-import dummy_data from '../res/dummy-test-store';
+import dummy_data from '../../res/dummy-test-store';
 
 
 //Components
-import EB from './ErrorBoundary';
-import Pager from './Pager';
+import EB from '../helpers/ErrorBoundary';
+import Pager from '../Pager';
 
 
-import logo from '../res/imgs/ap_logo_inv.png';
+import logo from '../../res/imgs/ap_logo_inv.png';
 
 
-import Profile from './Profiler';
+import Profile from '../Profiler';
 
 const profile = (
 	<div className="profile">
@@ -122,10 +122,17 @@ class Store extends Component {
 
 					<Suspense fallback={(<h3>Loading Results...</h3>)}>
 						<EB>
-							{current_tests && <Pager data={current_tests}>
+							{current_tests && <Pager data={current_tests} perPage={20}>
 								{paging => (
 									<React.Fragment>
-										<Results results={paging} />
+										<Results results={paging.list} />
+										{console.log(paging)}
+										<button onClick={() =>
+											this.setState((prevState) => ({
+											...prevState,
+											currentPage: paging.currentPage + 1,
+											clickerCount: paging.clickerCount + 1
+										}))}>Next Page</button>
 									</React.Fragment>
 								)}
 							</Pager>}
