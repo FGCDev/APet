@@ -6,7 +6,7 @@ import './App.css';
 
 import { connect } from 'react-redux';
 import {
-  NavLink,
+  // NavLink,
   Switch,
   Route,
   withRouter
@@ -17,7 +17,7 @@ import EB from './helpers/ErrorBoundary';
 import Loader from './helpers/Loader';
 
 const Landing = lazy(() => import('./Landing'));
-const Store = lazy(() => import('./meh/Store'));
+const Store = lazy(() => import('./store/Store'));
 
 // const Landing = ({ match }) => {
 //   //const location = props.match.path;

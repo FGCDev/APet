@@ -12,7 +12,7 @@ const Profiler = props => {
 	return (
 		<React.Fragment>
 			<div className="dpcontainer">
-				<Suspense fallback={<img className="dp preview" src={dpLQ} /> || (<Loader>Getting avatar...</Loader>)}>
+				<Suspense fallback={<img className="dp preview" src={dpLQ} alt="user's avatar is shown here"/> || (<Loader>Getting avatar...</Loader>)}>
 					<Img className="dp loaded" src={dpHQ} alt="user's avatar is shown here" />
 				</Suspense>
 			</div>

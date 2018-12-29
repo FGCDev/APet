@@ -13,6 +13,7 @@
     font-size: 2vh;
     background-color: #2D65FF;
     z-index: 100;
+    border-bottom: .4vh solid #222;
 }
 
 .Landing {
@@ -67,19 +68,19 @@
 }
 .profile {
     display: flex;
-    position: sticky;
-    background-color: #2D65FF;
+    right: 0;
     color: azure;
     width: 24vh;
     min-width: 200px;
     align-items: flex-start;
-    border: .4vh solid #ffffff;
+    /* border-bottom: .4vh solid #ffffff; */
     z-index: 100;
+    box-sizing: border-box;
 }
 
 .dpcontainer {
-    width: 9vh;
-    height: 10vh;
+    width: 8.1vh;
+    height: 9vh;
     margin: -.4vh;
     margin-bottom: -2vh;
     background-color: #222222;
@@ -101,18 +102,18 @@
 } */
 
 img.dp {
-    max-width: 8.2vh;
-    height: 9vh;
+    max-width: 7.2vh;
+    height: 8.1vh;
     margin: .5vh;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 88%, 50% 100%, 0 88%);
     /* margin-bottom: .4vh; */
     /* background-size: cover;  */
-    clip-path: polygon(0% 0%, 100% 0%, 100% 88%, 50% 100%, 0 88%);
     /* background-clip: content-box; */
     /* content: url(../res/shapes/profile-pic-container.svg); */
     /* background-repeat: no-repeat; */
     /* clip-path: polygon(0% 0%, 100% 0%, 100% 82%, 50% 100%, 0 82%);
-    background-clip: content-box;
-    border: 2px solid #f9f9f9; */
+    background-clip: content-box;*/
+    /* border-bottom: 4vh solid #f9f9f9;  */
 }
 
 .profile-info {

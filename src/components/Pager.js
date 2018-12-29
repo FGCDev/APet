@@ -1,28 +1,30 @@
-import React, { Component } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
+import dummyData from '../res/dummy-test-store';
+// import { connect } from 'react-redux'
+// import dummy_data from '../../res/dummy-test-store';
 
 
-
-export class Pager extends Component {
+export class Pager extends React.Component {
 	// constructor(props) {
 	// 	super()
 	// 	this.state = { current_list: props.data, msg: "Hi i'm pager" }
 	// }
 
 	static propTypes = {
-		data: PropTypes.array.isRequired,
-		perPage: PropTypes.number.isRequired,
+		resultData: PropTypes.array.isRequired,
 		currentPage: PropTypes.number.isRequired,
+		perPage: PropTypes.number.isRequired,
 	}
 
 	static defaultProps = {
+		resultData: [...dummyData],
 		currentPage: 1,
 		perPage: 11,
 	}
 
 	state = {
-		searchResults: this.props.data,
+		searchResults: this.props.resultData,
 		list: null,
 		perPage: this.props.perPage,
 		currentPage: this.props.currentPage,
@@ -30,11 +32,7 @@ export class Pager extends Component {
 		clickerCount: 0
 	}
 
-	messenger = () => {
-		console.log(this.state.msg);
-	}
-
-	pageChanger = (page) => {
+	pageChanger = (page = 1) => {
 		const { perPage, searchResults } = this.state;
 		// const list = this.state.searchResults;
 		let newList = searchResults.slice((page - 1) * perPage, page * perPage);
@@ -49,10 +47,10 @@ export class Pager extends Component {
 		this.pageChanger(this.state.currentPage);
 	}
 
-	componentDidUpdate(prevProps) {
-		if(this.state.currentPage !== prevProps.currentPage)
-			this.pageChanger(this.state.currentPage);
-	}
+	// componentDidUpdate(prevProps) {
+	// 	if(this.state.currentPage !== prevProps.currentPage)
+	// 		this.pageChanger(this.state.currentPage);
+	// }
 
 	// pageMaker = () => {
 

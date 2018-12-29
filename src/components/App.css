@@ -1,42 +1,18 @@
 .App {
-  text-align: center;
-  /* min-height: 100vh; */
-  max-width: 100vw;
-  width: 100vw;
-  box-sizing: border-box;
   display: flex;
-  /* flex: 1; */
+  flex: 1;
   flex-direction: column;
   align-items: center;
+  text-align: center;
+  /* min-height: 100vh; */
+  /* max-width: 100vw; */
+  /* width: 100vw; */
+  /* box-sizing: border-box; */
+  
   /* justify-content: center; */
   font-size: 1vh;
   color: #2e2e2e;
 }
-
-/* .App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-} */
-
-/* .App-header {
-  height: 8vh;
-  min-height: 64px;
-  box-sizing: border-box;
-  z-index: 20;
-} */
-
-.App-link {
-  color: #61dafb;
-}
-
-/* @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-} */
 
 /* Loader Effect for Images */
 .preview {
@@ -63,3 +39,29 @@
     opacity: 1;
   }
 }
+
+
+/* .App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+} */
+
+/* .App-header {
+  height: 8vh;
+  min-height: 64px;
+  box-sizing: border-box;
+  z-index: 20;
+} */
+
+.App-link {
+  color: #61dafb;
+}
+
+/* @keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+} */

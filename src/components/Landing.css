@@ -2,9 +2,14 @@
     height: 90vh;
 }
 
-.Hero.Background {
-    height: 90vh;
-    clip-path: polygon(0% 0%, 100% 0%, 100% 88%, 50% 100%, 0 88%);
+.Background {
+    margin-top: -8vh;
+}
+
+.Background Img {
+    width: 100vw;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 92%, 50% 100%, 0 92%);
+    /* clip-path: polygon(0% 0%, 100% 0%, 100% 88%, 50% 100%, 0 88%); */
 }
 
 .Why {

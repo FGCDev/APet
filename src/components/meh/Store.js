@@ -1,16 +1,16 @@
 import React, { Component, lazy, Suspense } from 'react';
-import propTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {
 	NavLink,
-	Switch,
-	Route,
+	// Switch,
+	// Route,
 	withRouter
 } from 'react-router-dom';
 
 //Assets
 // import logo from './logo.svg';
-import '../NavBar.css';
+import '../nav/navbar.css';
 import './Store.css';
 import dummy_data from '../../res/dummy-test-store';
 
@@ -49,45 +49,62 @@ const NavBar = props => {
 }
 
 NavBar.propTypes = {
-
+	user: PropTypes.string,
 }
 //Lazy Components
 const Results = lazy(() => import('./StoreResults'));
 
-
+// let searchArgs = [
+// 	'Recommended Tests',
+// 	'No. of Questions',
+// 	'Test Difficulty',
+// 	'Year Published',
+// 	'Test Duration',
+// 	'Question Types',
+// 	'Test Patterns'
+// ]
+let searchParams = [
+	<p>Recommended Tests</p>,
+	<p>No. of Questions</p>,
+	<p>Test Difficulty</p>,
+	<p>Year Published</p>,
+	<p>Test Duration</p>,
+	<p>Question Types</p>,
+	<p>Test Patterns</p>,
+]
 //Main Class
 class Store extends Component {
 	//################################ State Space ################################
-	state = { showControls: true, live_tests: [...dummy_data], current_tests: [...dummy_data], currentPage: null, totalPages: null, totalTests: 0, hasError: false }
+	state = { live_tests: dummy_data, currentPage: 1, totalPages: null, totalTests: 0, hasError: false, showControls: true }
 
 	//################################ Method Space ################################
 	//################################ LifeCycleMethods ################################
 	componentDidMount() {
-		//Load Init data.
 		console.log(this.state);
 	}
 	//################################ Cutom Methods ################################
-	// _toggleShowControls = (state) => {
-	// 	setState()
+	// _toggleShowControls = (state) => (setState())
 	// }
-	drawerToggleClickHandlerUser = () => {
-		this.setState((prevState) => {
-			return { showControls: !prevState.showControls };
-		});
-	};
+	// drawerToggleClickHandlerUser = () => {
+	// 	this.setState((prevState) => {
+	// 		return { 
+	// 			...prevState,
+	// 			showControls: !prevState.showControls };
+	// 	});
+	// };
 	//################################xXxXxXxXxXxX Method Space Ends XxXxXxXxXxXx################################
 
-	render(props) {
+	render() {
 		//const match = this.props.match;
 		let {
 			showControls:
 			live_tests,
-			current_tests,
-			currentPage,
-			totalPages,
-			totalTests
+			// current_tests,
+			// currentPage,
+			// totalPages,
+			// totalTests
 		} = this.state;
-		//const totalTests = live_tests.length;
+
 		let controller = this.state.showControls && (<EB>
 			<div className="Store-Controls">
 				<div>
@@ -96,13 +113,7 @@ class Store extends Component {
 				</div>
 				<div>
 					<h4>Filter Search</h4>
-					<p>Recommended Tests</p>
-					<p>No. of Questions</p>
-					<p>Test Difficulty</p>
-					<p>Year Published</p>
-					<p>Test Duration</p>
-					<p>Question Types</p>
-					<p>Test Patterns</p>
+					{searchParams}
 				</div>
 				<div>
 					<h4>Sort Results</h4>
@@ -114,6 +125,7 @@ class Store extends Component {
 		</div>
 		</EB>);
 
+		let page = 1;
 		return (
 			<React.Fragment>
 				<EB><NavBar /></EB>
@@ -122,17 +134,13 @@ class Store extends Component {
 
 					<Suspense fallback={(<h3>Loading Results...</h3>)}>
 						<EB>
-							{current_tests && <Pager data={current_tests} perPage={20}>
+							{(live_tests.length !== 0) && <Pager resultData={live_tests} perPage={10} currentPage={page}>
 								{paging => (
 									<React.Fragment>
 										<Results results={paging.list} />
 										{console.log(paging)}
-										<button onClick={() =>
-											this.setState((prevState) => ({
-											...prevState,
-											currentPage: paging.currentPage + 1,
-											clickerCount: paging.clickerCount + 1
-										}))}>Next Page</button>
+										<button onClick={() => page=page+1
+											}>Next Page</button>
 									</React.Fragment>
 								)}
 							</Pager>}
@@ -152,3 +160,10 @@ const mapStateToProps = state => {
 };
 //export default connect()(App);
 export default withRouter(connect(mapStateToProps)(Store));
+
+
+// this.setState((prevState) => ({
+// 	...prevState,
+// 	currentPage: paging.currentPage + 1,
+// 	clickerCount: paging.clickerCount + 1
+// }))

@@ -2,7 +2,7 @@ import React, { Suspense, PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import {
-	NavLink,
+	// NavLink,
 	withRouter
 } from 'react-router-dom';
 import { Img } from 'the-platform';
