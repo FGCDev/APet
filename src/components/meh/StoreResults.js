@@ -81,9 +81,9 @@ export class StoreResults extends PureComponent {
 				<h3>Showing Results for: {}</h3>
 				<EB>
 					<div className="Store-Results-List">
-						{this.props.results.map((test) =>
+						{this.props.results.map((test, i) =>
 							<Card
-								key={test.id}
+								key={i}
 								title={test.title}
 								ques={test.num_questions}
 								style={test.styler}

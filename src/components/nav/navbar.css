@@ -13,7 +13,7 @@
     font-size: 2vh;
     background-color: #2D65FF;
     z-index: 100;
-    border-bottom: .4vh solid #222;
+    /* border-bottom: .4vh solid #222; */
 }
 
 .Landing {
@@ -68,12 +68,13 @@
 }
 .profile {
     display: flex;
+    top: 0;
     right: 0;
     color: azure;
     width: 24vh;
     min-width: 200px;
     align-items: flex-start;
-    /* border-bottom: .4vh solid #ffffff; */
+    border: .4vh solid #ffffff;
     z-index: 100;
     box-sizing: border-box;
 }
@@ -83,7 +84,7 @@
     height: 9vh;
     margin: -.4vh;
     margin-bottom: -2vh;
-    background-color: #222222;
+    background-color: #FFFFFF;
     clip-path: polygon(0% 0%, 100% 0%, 100% 88%, 50% 100%, 0 88%);
     /* background-image: url(../res/shapes/profile-pic-container.svg);  */
     /* background-repeat: no-repeat; */
