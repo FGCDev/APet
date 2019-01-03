@@ -1,5 +1,6 @@
 import React, { Component, lazy, Suspense } from 'react';
 import throttle from 'lodash/throttle';
+import firebase from './services/fb';
 
 // import logo from './logo.svg';
 import './App.css';
@@ -99,6 +100,11 @@ class App extends Component {
 
   componentDidMount() {
     window.addEventListener('resize', this.onWindowResize);
+    firebase.auth().onAuthStateChanged(user => {
+      if(user){
+        this.props.history.push("/");
+      }
+    })
   }
 
   componentWillUnmount() {

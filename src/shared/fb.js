@@ -1,8 +1,50 @@
-import * as firebase from "firebase";
+import firebase from "firebase/app";
+import 'firebase/auth'
+import 'firebase/database'
+import 'firebase/firestore'
+import 'firebase/storage'
 
 import { FirebaseConfig } from "./keys.js";
 
 firebase.initializeApp(FirebaseConfig);
+
+const fs = firebase.firestore();
+const auth = firebase.auth().useDeviceLanguage();
+const userColRef = fs.collection("users");
+
+export const getUserDocRef = (uID) => {
+	return userColRef.doc(uID);
+}
+
+export const getDocRef = (url_path) => {
+	return fs.doc(url_path);
+}
+
+
+/*
+	In firestore things start with a collection.
+	each collection contains only documents. Collections simply can't containt any key-val pairs.
+	each document stores key-value pairs (or Fields) ie objData or sub-collections and so on.
+
+	when querying back only shallow queries are returned. as in only the immediate documents shall be returned
+*/
+const uID = "sasds13312";
+const userpiDocRef = getDocRef('users/'+uID+'/personaldata/'+'name');
+userpiDocRef.set({
+	//userName: Profiler.userName
+}).then(success => {
+	console.log("FS write Successful. Status:", success);
+}).catch(err => {
+	console.log("FS write returned an error. Here goes nufink:", err);
+})
+
+
+const getRTUpdates = () => {
+	userpiDocRef.onSnapshot((doc)=> {
+		if (doc && doc.exists) return doc.data();
+	})
+}
+
 
 export const dbRef = firebase.database().ref();
 
