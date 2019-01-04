@@ -16,7 +16,7 @@ import {
 import EB from './helpers/ErrorBoundary';
 import Loader from './helpers/Loader';
 
-const Landing = lazy(() => import('./Landing'));
+const Landing = lazy(() => import('./newer'));
 const Store = lazy(() => import('./store/Store'));
 
 // const Landing = ({ match }) => {

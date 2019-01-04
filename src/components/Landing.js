@@ -46,7 +46,7 @@ NavBar.propTypes = {
 
 class Landing extends Component {
   static propTypes = {
-
+    users: PropTypes.string,
   }
 
   render() {

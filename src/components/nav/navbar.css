@@ -4,7 +4,7 @@
     left: 0;
     right: 0;
     display: flex;
-    width: 100vw;
+    width: 100%;
     height: 8vh;
     max-height: 86px;
     box-sizing: border-box;
@@ -52,12 +52,16 @@
     color: azure;
     margin: 0px 8px ;
 } */
+a{
+    text-decoration: none;
+    
+}
 .Link {
     color: azure;
     margin: 0px 8px ;
 }
-.Link:visited{
-    color: antiquewhite;
+.Link:visited {
+    color: #fff;
     margin: 0px 8px ;
 }
 .Link:hover {
