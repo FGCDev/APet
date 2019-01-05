@@ -12,7 +12,7 @@ import pic3 from '../res/imgs/land4.jpg';
 
 import logo from '../res/imgs/ap_logo_inv.png';
 import logo2 from '../res/imgs/ap_logo.png';
-import Profile from './Profiler';
+import Profile from './nav/Profiler';
 
 const preface_heading = "Another educational startup?";
 const preface_textLeft = ["Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vehicula felis sed mauris dapibus malesuada.",
@@ -74,7 +74,7 @@ const Preface = props => {
 }
 
 Preface.propTypes = {
-
+	heading: PropTypes.string,
 }
 
 Preface.defaultProps = {
