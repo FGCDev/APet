@@ -9,43 +9,44 @@ import { Img } from 'the-platform';
 
 import EB from '../helpers/ErrorBoundary';
 import Loader from '../helpers/Loader';
+import StoreCard from '../store/StoreCard';
 
-const Card = (props) => {
-	let classy = "Card ";
-	let classyinfo = "Card-Info ";
-	//if (props.style) classy = classy.concat(props.style)
-	return (
-		<div className={classy}>
-			<div style={{ height: '28vh' }}>
-				<Suspense fallback={(<Loader className="previewtext" text="Getting Your Image" />)}>
-					<Img className="loaded" src={props.cover} alt="Cover of the book" />
-				</Suspense>
-			</div>
-			<div className={classyinfo}>
-				<h4>{props.title}</h4>
-			</div>
-		</div>
-	);
-};
+// const Card = (props) => {
+// 	let classy = "Card ";
+// 	let classyinfo = "Card-Info ";
+// 	//if (props.style) classy = classy.concat(props.style)
+// 	return (
+// 		<div className={classy}>
+// 			<div style={{ height: '28vh' }}>
+// 				<Suspense fallback={(<Loader className="previewtext" text="Getting Your Image" />)}>
+// 					<Img className="loaded" src={props.cover} alt="Cover of the book" />
+// 				</Suspense>
+// 			</div>
+// 			<div className={classyinfo}>
+// 				<h4>{props.title}</h4>
+// 			</div>
+// 		</div>
+// 	);
+// };
 
-Card.propTypes = {
-	title: PropTypes.string.isRequired,
-	id: PropTypes.string,
-	ques: PropTypes.number,
-	style: PropTypes.string,
-	cover: PropTypes.string,
-	level: PropTypes.string,
-	type: PropTypes.string,
-	price: PropTypes.string,
-	updated: PropTypes.string,
-	// country: PropTypes.shape({
-	//   cca2: PropTypes.string.isRequired,
-	//   region: PropTypes.string.isRequired,
-	//   name: PropTypes.shape({
-	//     common: PropTypes.string.isRequired
-	//   }).isRequired
-	// }).isRequired
-};
+// Card.propTypes = {
+// 	title: PropTypes.string.isRequired,
+// 	id: PropTypes.string,
+// 	ques: PropTypes.number,
+// 	style: PropTypes.string,
+// 	cover: PropTypes.string,
+// 	level: PropTypes.string,
+// 	type: PropTypes.string,
+// 	price: PropTypes.string,
+// 	updated: PropTypes.string,
+// 	// country: PropTypes.shape({
+// 	//   cca2: PropTypes.string.isRequired,
+// 	//   region: PropTypes.string.isRequired,
+// 	//   name: PropTypes.shape({
+// 	//     common: PropTypes.string.isRequired
+// 	//   }).isRequired
+// 	// }).isRequired
+// };
 
 export class StoreResults extends PureComponent {
 
@@ -82,7 +83,7 @@ export class StoreResults extends PureComponent {
 				<EB>
 					<div className="Store-Results-List">
 						{this.props.results.map((test, i) =>
-							<Card
+							<StoreCard
 								key={i}
 								title={test.title}
 								ques={test.num_questions}

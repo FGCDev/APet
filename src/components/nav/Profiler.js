@@ -1,7 +1,7 @@
 import React, { Suspense } from 'react'
 import PropTypes from 'prop-types'
 import { Img } from 'the-platform';
-import Loader from './helpers/Loader';
+import Loader from '../helpers/Loader';
 
 // import dummy_img from '../res/imgs/Champ_Small.png';
 
