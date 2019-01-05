@@ -134,7 +134,7 @@ class Store extends Component {
 
 					<Suspense fallback={(<h3>Loading Results...</h3>)}>
 						<EB>
-							{(live_tests.length !== 0) && <Pager resultData={live_tests} perPage={10} currentPage={page}>
+							{live_tests.length > 0 && (<Pager resultData={live_tests} perPage={10} currentPage={page}>
 								{paging => (
 									<React.Fragment>
 										<Results results={paging.list} />
@@ -143,7 +143,7 @@ class Store extends Component {
 											}>Next Page</button>
 									</React.Fragment>
 								)}
-							</Pager>}
+							</Pager>)}
 						</EB>
 					</Suspense>
 				</div>
