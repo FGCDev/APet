@@ -1,4 +1,4 @@
-import FirebaseApp from "./fb";
+import FirebaseApp from "../services/fb";
 
 class UsersDatabase {
   constructor() {

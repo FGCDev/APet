@@ -1,5 +1,5 @@
 
-import FirebaseApp from "./fb";
+import FirebaseApp from "../services/fb";
 
 class FirebaseMessaging {
   constructor(config = {}) {

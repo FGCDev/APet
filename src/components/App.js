@@ -1,6 +1,6 @@
 import React, { Component, lazy, Suspense } from 'react';
 import throttle from 'lodash/throttle';
-import firebase from './services/fb';
+import firebase from '../services/fb';
 
 // import logo from './logo.svg';
 import './App.css';
@@ -52,12 +52,30 @@ const Store = lazy(() => import('./store/Store'));
 // };
 //export default Landing;
 
-const routes = [
+const routesNew = [
   {
     path: '/',
     exact: true,
     //sidebar: () => <div> Default Route </div>,
     component: () => <Suspense fallback={(<Loader />)}><Landing /></Suspense>
+  },
+  {
+    path: '/login',
+    exact: true,
+    component: () => <Suspense fallback={(<Loader />)}><Landing /></Suspense>/*(props) => <Landing props={props}/>*/
+  },
+  {
+    path: '/signup',
+    exact: true,
+    component: () => <Suspense fallback={(<Loader />)}><Landing /></Suspense>/*(props) => <Landing props={props}/>*/
+  },
+];
+const routesAuth = [
+  {
+    path: '/',
+    exact: true,
+    //sidebar: () => <div> Default Route </div>,
+    component: () => <Suspense fallback={(<Loader />)}><Store /></Suspense>
   },
   {
     path: '/landed',
@@ -85,7 +103,15 @@ const routes = [
     component: () => <h2>Profile</h2>
   }
 ];
+let routes = [];
 
+if (!firebase.auth().currentUser) {
+  // User is signed in.
+  routes = routesNew
+} 
+else{
+  routes = routesAuth
+}
 
 class App extends Component {
   state = {

@@ -1,3 +1,5 @@
+import { AUTH_USER_SIGNIN, AUTH_USER_SIGNUP, AUTH_USER_SIGNOUT, AUTH_INIT_USER_DATA, AUTH_FETCHING_USER, AUTH_FETCHING_USER_SUCCESS, AUTH_FETCHING_USER_FAILURE } from '../actions/auth'
+
 const initState = {
     user: {
         token: null,
@@ -9,66 +11,31 @@ const initState = {
         PhoneNumber: null,
     },
     error: null,
-    loading: false,
+    fetching_user: false,
     authRedirectPath: '/'
 };
 
-const updateObject = (baseObject, updater) => { return{...baseObject ,...updater}; };
+const updateState = (prevState, updatedObj) => { return { ...prevState, ...updatedObj }; };
 
 const authSuccess = (state, action) => {
-    //console.log('[Red/Auth] Authentication Successful');
-    // //Extracting Values from User Object
-    // const uPhNum = action.authUser.phoneNumber;
-    // //Extracting Values from UserInfo Object
-    // const uFName = action.authUserInfo.profile.given_name;
-    // const uLName = action.authUserInfo.profile.family_name;
-    // const uEmail = action.authUserInfo.profile.email;
-    // const uPic = action.authUserInfo.profile.picture;
-
-    
-
-    //const oldState = {...state}
-
-    // console.log('User Initial State', state);
-
-    const user = {...state.user};
-    // console.log('Initial User', user);
-
-    // const newState = { user: {
-    //     ...user,
-    //     isAuth: true,
-    //     token: action.authToken,
-    //     Id: action.userId,
-    //     GivenName: action.authUserInfo.profile.given_name,
-    //     FamilyName: action.authUserInfo.profile.family_name,
-    //     PicUrl: action.authUserInfo.profile.picture,
-    //     Email: action.authUserInfo.profile.email,
-    //     PhoneNumber: action.authUser.phoneNumber || 'No Number Given',
-    // }};
-    // console.log('New User', newUser);
-    // console.log('User update State', uFName, uLName, uPhNum, uEmail, uPic);
-
-    // localStorage.setItem('userGivenName', uFName);
-    // localStorage.setItem('userFamilyName', uLName);
-    // localStorage.setItem('userPhoneNumber', uPhNum);
-    // localStorage.setItem('userEmail', uEmail);
-    // localStorage.setItem('userPic', uPic);
-    // return updateObject(state, newState);
-    return updateObject(state, { user: {
-        ...user,
-        token: action.authToken,
-        Id: action.userId,
-        GivenName: action.authUserInfo.profile.given_name,
-        FamilyName: action.authUserInfo.profile.family_name,
-        PicUrl: action.authUserInfo.profile.picture,
-        Email: action.authUserInfo.profile.email,
-        PhoneNumber: action.authUser.phoneNumber || 'No Number Provided'
-    }});
+    const user = { ...state.user };
+    return updateState(state, {
+        user: {
+            ...user,
+            token: action.authToken,
+            Id: action.userId,
+            GivenName: action.authUserInfo.profile.given_name,
+            FamilyName: action.authUserInfo.profile.family_name,
+            PicUrl: action.authUserInfo.profile.picture,
+            Email: action.authUserInfo.profile.email,
+            PhoneNumber: action.authUser.phoneNumber || 'No Number Provided'
+        }
+    });
 };
 
 const logoutInit = (state) => {
     //console.log('[Red/Auth] Logout Initiated');
-    return updateObject(state, initState);
+    return updateState(state, initState);
     // return updateObject(state, {
     //     token: null, 
     //     user: null, 
@@ -77,23 +44,30 @@ const logoutInit = (state) => {
 
 const mapUserData = (state, action) => {
     //console.log("[Red/User] User Data Payload Is:", action.obj);
-    return updateObject(state, {
-      userId: action.obj.uID,
-      givenName: action.obj.gname,
-      familyName: action.obj.fname,
-      eMail: action.obj.email,
-      dPic: action.obj.dp,
-      mobNum: action.obj.mobile || 'No Number Provided'
+    return updateState(state, {
+        userId: action.obj.uID,
+        givenName: action.obj.gname,
+        familyName: action.obj.fname,
+        eMail: action.obj.email,
+        dPic: action.obj.dp,
+        mobNum: action.obj.mobile || 'No Number Provided'
     });
-  };
+};
 
 export default (state = initState, action) => {
     switch (action.type) {
-        case actionTypes.AUTH_LOGIN:
+        case AUTH_FETCHING_USER:
+            return updateState(state, { fetching_user: true });
+        case AUTH_FETCHING_USER_FAILURE:
+            return updateState(state, { 
+                fetching_user: false,
+                error: action.error 
+            });
+        case AUTH_FETCHING_USER_SUCCESS:
             return authSuccess(state, action);
-        case actionTypes.AUTH_LOGOUT:
+        case AUTH_USER_SIGNOUT:
             return logoutInit(state);
-        case actionTypes.AUTH_SET_USERDATA:
+        case AUTH_INIT_USER_DATA:
             return mapUserData(state, action);
         default:
             return state;

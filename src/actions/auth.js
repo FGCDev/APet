@@ -1,6 +1,14 @@
-export const ACT_USER_SIGNUP = "USER_SIGNUP";
-export const ACT_USER_SIGNIN = "USER_SIGNIN";
-export const ACT_USER_SIGNOUT = "USER_SIGNOUT";
+import { callReducer } from "../shared/commons";
+import { authRef, getUserRef, gProvider } from '../services/fb';
+
+export const AUTH_USER_SIGNIN_GOOGLE = "USER_SIGNIN";
+export const AUTH_USER_SIGNUP_MOBILE = "USER_SIGNUP";
+export const AUTH_USER_SIGNOUT = "USER_SIGNOUT";
+export const AUTH_INIT_USER_DATA = "INITIALIZE_USER_DATA";
+export const AUTH_FETCHING_USER = 'FETCHING_USER'
+export const REMOVE_FETCHING_USER = 'REMOVE_FETCHING_USER'
+export const AUTH_FETCHING_USER_FAILURE = 'FETCHING_USER_FAILURE'
+export const AUTH_FETCHING_USER_SUCCESS = 'FETCHING_USER_SUCCESS'
 
 const writeUserPersonalInfo = (uID, uGname, uFname, uEmail, uPic, uPhone) => {
     const userInfo = {
@@ -27,13 +35,13 @@ const writeUserPersonalInfo = (uID, uGname, uFname, uEmail, uPic, uPhone) => {
 		// }});
 		
 		//console.log("[Act/Auth/writeUserPersonalInfo] uInfo is:", userInfo);
-		dispatch(asyncTriggerReducer(actionTypes.AUTH_SET_USERDATA, userInfo));
+		dispatch(callReducer(AUTH_INIT_USER_DATA, userInfo));
 	};
 };
 
 export const fbSignIn = (/*Takes Payload of the associated Action*/) => {
     return dispatch => {
-        authRef.signInWithPopup(provider).then(result => {
+        authRef.signInWithPopup(gProvider).then(result => {
             // This gives you a Google Access Token. You can use it to access the Google API.
             const token = result.credential.accessToken;
             // The signed-in user info.
@@ -51,7 +59,8 @@ export const fbSignIn = (/*Takes Payload of the associated Action*/) => {
             dispatch(writeUserPersonalInfo(userId, uInfo.profile.given_name, uInfo.profile.family_name, uInfo.profile.email, uInfo.profile.picture, user.phoneNumber)); //FIXME
             //console.log("[Act/Auth] Trying Multi Dispatcher");
             if(uInfo.isNewUser)
-                dispatch(acts.addTodo(userId));
+                console.log("[Todo] Initialize Data for New User");    
+            //dispatch(acts.addTodo(userId));
 
             // ...
           }).catch(error => {
@@ -69,7 +78,7 @@ export const fbSignIn = (/*Takes Payload of the associated Action*/) => {
 
 export const logIn = (token, user, uInfo, userID) => {
     return { /*Retunrs an action*/
-        type: actionTypes.AUTH_LOGIN,
+        type: AUTH_USER_SIGNIN_GOOGLE,
         authToken: token,
         authUser: user,
         authUserInfo: uInfo,
@@ -77,20 +86,33 @@ export const logIn = (token, user, uInfo, userID) => {
     };
 };
 
-export const logInError = (code, message) => {
+export const logInError = (error, message) => {
     return { /*Retunrs an action*/
-        type: actionTypes.AUTH_ERROR,
-        errorCode: code,
+        type: AUTH_FETCHING_USER_FAILURE,
+        errorCode: error,
         errorMessage: message
     };
 };
 
+// export function fetchAndHandleAuthedUser () {
+//     return function (dispatch) {
+//       dispatch(fetchingUser())
+//       return auth().then(({user, credential}) => {
+//         const userData = user.providerData[0]
+//         const userInfo = formatUserInfo(userData.displayName, userData.photoURL, user.uid)
+//         return dispatch(fetchingUserSuccess(user.uid, userInfo, Date.now()))
+//       })
+//       .then(({user}) => saveUser(user))
+//       .then((user) => dispatch(authUser(user.uid)))
+//       .catch((error) => dispatch(fetchingUserFailure(error)))
+//     }
+//   }
 
 export const logout = () => {
     localStorage.removeItem('authState');
     localStorage.removeItem('token');
     localStorage.removeItem('userID');
     return {
-        type: actionTypes.AUTH_LOGOUT
+        type: AUTH_USER_SIGNOUT
     };
 };
