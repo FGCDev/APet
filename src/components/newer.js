@@ -136,7 +136,7 @@ const FooterCol = props => {
 		<div className="footerCol">
 			<ul className="footerList">
 				<h4>{colHeader}</h4>
-				{links.map(item => <a href="/" target="_blank"><li>{item}</li></a>)}
+				{links.map((item,i) => <a key={i} href="/" target="_blank"><li>{item}</li></a>)}
 			</ul>
 		</div>
 	)
@@ -150,7 +150,7 @@ const Footer = props => {
 				<p>Adrress line 1 lorem ipsum <br /> New Delhi lorem ipsum <br /> hellow helleow mew mew</p>
 				<br /> &nbsp;© Aditya Publications. Powered by SaarthiEngine
           </div>
-			{footer_link.map(linkArray => <FooterCol link={linkArray} />)}
+			{footer_link.map((linkArray,i) => <FooterCol key={i} link={linkArray} />)}
 			<div className="footerCol flexGrow">
 				<h4>GET EXAM AND COURSE UPDATES</h4>
 				<p>Get invited to our mailing list</p>

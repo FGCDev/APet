@@ -16,9 +16,11 @@ import {
 // import Store from './Store';
 import EB from './helpers/ErrorBoundary';
 import Loader from './helpers/Loader';
+import handleInitialStoreData from './../actions/index.js';
 
 const Landing = lazy(() => import('./newer'));
 const Store = lazy(() => import('./store/Store'));
+
 
 // const Landing = ({ match }) => {
 //   //const location = props.match.path;
@@ -131,6 +133,7 @@ class App extends Component {
         this.props.history.push("/");
       }
     })
+    this.props.dispatch(handleInitialStoreData());
   }
 
   componentWillUnmount() {
