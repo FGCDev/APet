@@ -28,25 +28,25 @@ export const getDocRef = url_path => {
 	each document stores key-value pairs (or Fields) ie objData or sub-collections and so on.
 	when querying back only shallow queries are returned. as in only the immediate documents shall be returned
 */
-const test_uID = "sasds13312";
-const test_uName = "JohnathanDoe"
-const userpifsDocRef = getDocRef("users/" + test_uID + "/personaldata/" + test_uName);
-userpifsDocRef
-	.set({
-		userName: test_uName
-	})
-	.then(success => {
-		console.log("FS write Successful. Status:", success);
-	})
-	.catch(err => {
-		console.log("FS write returned an error. Here goes nufink:", err);
-	});
+// const test_uID = "sasds13312";
+// const test_uName = "JohnathanDoe"
+// const userpifsDocRef = getDocRef("users/" + test_uID + "/personaldata/" + test_uName);
+// userpifsDocRef
+// 	.set({
+// 		userName: test_uName
+// 	})
+// 	.then(success => {
+// 		console.log("FS write Successful. Status:", success);
+// 	})
+// 	.catch(err => {
+// 		console.log("FS write returned an error. Here goes nufink:", err);
+// 	});
 
-export const getRTUpdates = () => {
-	userpifsDocRef.onSnapshot(doc => {
-		if (doc && doc.exists) return doc.data();
-	});
-};
+// export const getRTUpdates = () => {
+// 	userpifsDocRef.onSnapshot(doc => {
+// 		if (doc && doc.exists) return doc.data();
+// 	});
+// };
 
 /*################ FB Auth Refs and Functions ################ */
 export const authRef = firebase.auth().useDeviceLanguage();

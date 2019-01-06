@@ -2,29 +2,35 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import Profile from '../nav/Profiler';
-import { NavLink/*, withRouter*/ } from 'react-router-dom'
+import { Link/*, withRouter*/ } from 'react-router-dom'
+import { Formik } from 'formik';
 
 import logo from '../../res/imgs/ap_logo_inv.png';
+import filter from '../../res/shapes/filter_optm.svg';
+import sort from '../../res/shapes/sort_optm.svg';
 import '../nav/navbar.css';
-
-// const profile = (
-	
-// );
+import '../store/store.css';
+import Results from './Results';
 
 const StoreNavBar = props => {
 	return (
-		<div className="NavBar">
-			<img className="logo" src={logo} alt="Logo for Aditya Publication © 2018" />
-			<div className="links-container">
-				<ul className="links-list">
-					<li><NavLink className="Link" to="/">Home</NavLink></li>
-					<li><NavLink className="Link" to="/Dashboard">Landing</NavLink></li>
-				</ul>
+		<React.Fragment>
+			<div className="NavBar">
+				<Link className="logoContainer" to="/"><img className="logo" src={logo} alt="Logo for Aditya Publication © 2018" /></Link>
+				<div className="links-container">
+					<Formik>
+
+					</Formik>
+				</div>
+				<Link className="Link" to="/Dashboard"><Profile min={true} /></Link>
 			</div>
-			<div className="profile">
-				<Profile />
+			<div className="SearchBar">
+				<img className="Icon" src={filter} alt="drop down menut for filtering search results" />
+				<hr />
+				<img className="Icon" src={sort} alt="drop down menut for sorting search results" />
 			</div>
-		</div>
+		</React.Fragment>
+
 	)
 }
 
@@ -37,15 +43,17 @@ StoreNavBar.propTypes = {
 
 export class Store extends Component {
 	static propTypes = {
-		prop: PropTypes
+		user: PropTypes.object,
 	}
 
 	render() {
-		let searchBar = (
-			<div className={"SearchBar"}>
+		// let searchBar = (
+		// 	<React.Fragment>
 
-			</div>
-			);
+
+		// 	</React.Fragment>
+
+		// );
 
 		let searchParams = [
 			<p>Recommended Tests</p>,
@@ -57,15 +65,18 @@ export class Store extends Component {
 			<p>Test Patterns</p>,
 		]
 		let storeControls = (
-			<div>
+			<aside className="SidePanel">
 				{searchParams}
-			</div>
+			</aside>
 		)
-		
+
 		return (
 			<React.Fragment>
-				{searchBar}
-				{storeControls}
+				<StoreNavBar />
+				<div className="Results">
+					{storeControls}
+					<Results />
+				</div>
 			</React.Fragment>
 		)
 	}
