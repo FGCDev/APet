@@ -1,0 +1,50 @@
+.BookContainer {
+    display: flex;
+    flex: 1;
+    width: 480px;
+    height: 300px;
+    padding: 8px;
+    font-size: 1.6vh;
+    justify-content: space-between; 
+    background: #FFFFFF;
+    box-shadow: .5px .5px 1px 1px #CCCCCC39;
+}
+
+.BookContainer:nth-of-type(even){
+    background: #FEFEFE;
+}
+
+.BookCover {
+    width: 220px;
+    height: inherit;
+}
+
+.BookDetails { 
+    flex: 1; 
+    width: 100px; 
+    height: 300px; 
+    justify-content: space-between;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+.BookIdentifiers {
+    width: inherit;
+}
+
+.BookMeta {
+    width: inherit;
+    height: 60px;
+}
+
+.BookPricing {
+    width: inherit;
+    height: 100px;
+}
+
+.BookMark {
+    width: 48px; 
+    height: 48px;
+    box-sizing: border-box;
+    padding: inherit;
+}

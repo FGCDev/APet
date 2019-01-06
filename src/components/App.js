@@ -69,6 +69,11 @@ const routesNew = [
     exact: true,
     component: () => <Suspense fallback={(<Loader />)}><Landing /></Suspense>/*(props) => <Landing props={props}/>*/
   },
+  {
+    path: '/store',
+    exact: true,
+    component: () => <Suspense fallback={(<Loader />)}><Store /></Suspense>
+  }
 ];
 const routesAuth = [
   {
@@ -126,11 +131,11 @@ class App extends Component {
 
   componentDidMount() {
     window.addEventListener('resize', this.onWindowResize);
-    firebase.auth().onAuthStateChanged(user => {
-      if(user){
-        this.props.history.push("/");
-      }
-    })
+    // firebase.auth().onAuthStateChanged(user => {
+    //   if(user){
+    //     this.props.history.push("/");
+    //   }
+    // })
   }
 
   componentWillUnmount() {

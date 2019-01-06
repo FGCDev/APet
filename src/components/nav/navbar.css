@@ -25,11 +25,10 @@
 }
 
 .logo {
-    height: inherit;
-    max-height: 82px;
-    min-width: 16vh;
-    padding: .6vh;
-    box-sizing: border-box;
+    width: 16vh;
+    /* max-height: inherit; */
+    min-width: 300px;
+    margin: 8px;
 }
 
 .links-container {
@@ -75,6 +74,7 @@ a{
     top: 0;
     right: 0;
     color: azure;
+    height: inherit;
     width: 24vh;
     min-width: 200px;
     align-items: flex-start;

@@ -5,41 +5,38 @@ import { Img } from 'the-platform';
 
 import EB from '../helpers/ErrorBoundary';
 import Loader from '../helpers/Loader';
+import bookmark from '../../res/shapes/baseline-bookmark_border-24px.svg';
 
 const StoreCard = (props) => {
     // let classy = "Card ";
     // let classyinfo = "Card-Info ";
     //if (props.style) classy = classy.concat(props.style)
     return (
-        <div className="BookContainer" style={{flex: 1, width: 600, height: 300, padding: 8, }}>
-            <div className="BookCover"style={{ flex: 1, width: 220, height: 'inherit' }}>
-                <Suspense fallback={(<Loader className="previewtext" text="Getting Your Image" />)}>
-                    <Img className="loaded" src={props.cover} alt="Cover of the book" />
-                </Suspense>
-            </div>
-            <div className="BookDetails" style={{ flex: 1, width: 100, height: 'inherit', justifyContent: 'space-between', alignContent: 'flex-start', padding: 8, flexGrow: 1, }}>
-                <div style={{ flex: 1, width: 'inherit', }}>
-                    {props.title}
-                    {props.target}
-                    {props.subject}
-                    {props.board}
+        <div className="BookContainer">
+            <Suspense fallback={(<Loader className="BookCover previewtext" text="Getting Your Image" />)}>
+                <Img className="BookCover loaded" src={props.cover} alt="Cover of the book" />
+            </Suspense>
+            <div className="BookDetails">
+                <div className="BookIdentifiers">
+                    <h3>{props.title}</h3>
+                    <h4>{props.target}</h4>
+                    <h5>{props.subject}</h5>
+                    <h5>{props.board}</h5>
                 </div>
-                <div style={{ flex: 1, width: 'inherit', height: 60, }} >
+                <div className="BookMeta" >
                     {props.pages + " Pages | ." + props.format}
                     {props.rating + " " + props.reviews + "Reviews"}
                 </div>
-                <div className="BookPricing" style={{ flex: 1, width: 100, height: 100, }}>
+                <div className="BookPricing">
                     <h2>{"Rs. "+props.price}</h2>
                 </div>
             </div>
-            <div  className="BookMark" style={{ flex: '1', width: '60', height: '60', padding: 'inherit', }}>
-                <img src={} alt="toggle button for bookmarking the store items" />
-            </div>
+            <img className="BookMark" src={bookmark} alt="toggle button for bookmarking the store items" />
         </div>
     );
 };
 
-Card.propTypes = {
+StoreCard.propTypes = {
     id: PropTypes.string.isRequired,
     cover: PropTypes.string,
     title: PropTypes.string.isRequired,
@@ -54,3 +51,18 @@ Card.propTypes = {
     bookmarked: PropTypes.bool,
     style: PropTypes.string,
 };
+
+StoreCard.defaultProps = {
+
+    target: "12th Boards 2019",
+    subject: "Mathematics",
+    board: "CBSE",
+    pages: "120",
+    format: "PDF",
+    rating: "4.67",
+    reviews: "29",
+    price: "149",
+    bookmarked: PropTypes.bool,
+    style: PropTypes.string,
+};
+export default StoreCard
