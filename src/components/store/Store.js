@@ -12,7 +12,14 @@ import '../nav/navbar.css';
 import '../store/store.css';
 import Results from './Results';
 
+const actfil = [
+	{label: 'active filters'},
+	{label: 'act filters'},
+	{label: 'active fils'},
+];
+
 const StoreNavBar = props => {
+	const { activeFilters } = props;
 	return (
 		<React.Fragment>
 			<div className="NavBar">
@@ -25,19 +32,30 @@ const StoreNavBar = props => {
 				<Link className="Link" to="/Dashboard"><Profile min={true} /></Link>
 			</div>
 			<div className="SearchBar">
-				<img className="Icon" src={filter} alt="drop down menut for filtering search results" />
-				<hr />
-				<img className="Icon" src={sort} alt="drop down menut for sorting search results" />
+				<img className="Icon" src={filter} alt="drop down menu for filtering search results" />
+				<div>
+					{activeFilters.map((fil, i) => 
+						<p key={i}>{fil.label}</p>)}
+				</div>
+				<img className="Icon" src={sort} alt="drop down menu for sorting search results" aria-label="drop down menu for sorting search results" />
+				<div><p>active sort</p><p>{JSON.stringify(props)}</p></div>
 			</div>
 		</React.Fragment>
-
 	)
 }
 
 StoreNavBar.propTypes = {
-
+	user: PropTypes.object,
+	filters: PropTypes.array,
+	activeFilters: PropTypes.array,
+	sortOpts: PropTypes.array,
+	activeSort: PropTypes.string,
+	sortOrder: PropTypes.bool,
 }
 
+StoreNavBar.defaultProps = {
+	activeFilters: actfil,
+}
 // export default StoreNavBar
 
 
@@ -56,6 +74,7 @@ export class Store extends Component {
 		// );
 
 		let searchParams = [
+			<h3>Advanced Filters</h3>,
 			<p>Recommended Tests</p>,
 			<p>No. of Questions</p>,
 			<p>Test Difficulty</p>,
@@ -63,6 +82,11 @@ export class Store extends Component {
 			<p>Test Duration</p>,
 			<p>Question Types</p>,
 			<p>Test Patterns</p>,
+			<br />,
+			<h3>Trending</h3>,
+			<p>Recommended Tests</p>,
+			<p>No. of Questions</p>,
+			<p>Test Difficulty</p>,
 		]
 		let storeControls = (
 			<aside className="SidePanel">
@@ -86,8 +110,4 @@ const mapStateToProps = (state) => ({
 
 })
 
-const mapDispatchToProps = {
-
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Store)
+export default connect(mapStateToProps)(Store)

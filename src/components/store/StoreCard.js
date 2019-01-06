@@ -12,8 +12,8 @@ const StoreCard = (props) => {
     // let classyinfo = "Card-Info ";
     //if (props.style) classy = classy.concat(props.style)
     return (
-        <div className="BookContainer">
-            <Suspense fallback={(<Loader className="BookCover previewtext" text="Getting Your Image" />)}>
+        <Link className="BookContainer" to='/store'><EB>
+            <Suspense className="BookCover" fallback={(<Loader className="BookCover previewtext" text="Getting Your Image" />)}>
                 <Img className="BookCover loaded" src={props.cover} alt="Cover of the book" />
             </Suspense>
             <div className="BookDetails">
@@ -24,15 +24,15 @@ const StoreCard = (props) => {
                     <h5>{props.board}</h5>
                 </div>
                 <div className="BookMeta" >
-                    {props.pages + " Pages | ." + props.format}
-                    {props.rating + " " + props.reviews + "Reviews"}
+                    <h5>{props.pages + " Pages | ." + props.format}</h5>
+                    <h5>{props.rating + " " + props.reviews + " Reviews"}</h5>
                 </div>
                 <div className="BookPricing">
                     <h2>{"Rs. "+props.price}</h2>
                 </div>
             </div>
             <img className="BookMark" src={bookmark} alt="toggle button for bookmarking the store items" />
-        </div>
+        </EB></Link>
     );
 };
 
