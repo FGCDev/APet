@@ -1,13 +1,13 @@
 .BookContainer {
     display: flex;
     flex: 1;
-    width: 480px;
+    width: 400px;
     height: 300px;
     padding: 8px;
     font-size: 1.6vh;
     justify-content: space-between; 
     background: #FFFFFF;
-    box-shadow: .5px .5px 1px 1px #CCCCCC39;
+    box-shadow: .5px .5px 1px 1px #CCCCCC60;
 }
 
 .BookContainer:nth-of-type(even){
@@ -16,12 +16,14 @@
 
 .BookCover {
     width: 220px;
+    max-width: 220px;
     height: inherit;
+    box-sizing: border-box;
 }
 
 .BookDetails { 
     flex: 1; 
-    width: 100px; 
+    width: 120px; 
     height: 300px; 
     justify-content: space-between;
     padding: 8px;
@@ -29,17 +31,16 @@
 }
 
 .BookIdentifiers {
-    width: inherit;
+    height: 40%;
+    line-height: 1px;
 }
 
 .BookMeta {
-    width: inherit;
-    height: 60px;
+    height: 30%;
 }
 
 .BookPricing {
-    width: inherit;
-    height: 100px;
+    height: 20%;
 }
 
 .BookMark {
