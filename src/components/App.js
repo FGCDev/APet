@@ -19,6 +19,7 @@ import Loader from './helpers/Loader';
 
 const Landing = lazy(() => import('./newer'));
 const Store = lazy(() => import('./store/Store'));
+const ItemDetails = lazy(() => import('./store/ItemDetails'));
 
 // const Landing = ({ match }) => {
 //   //const location = props.match.path;
@@ -73,6 +74,11 @@ const routesNew = [
     path: '/store',
     exact: true,
     component: () => <Suspense fallback={(<Loader />)}><Store /></Suspense>
+  },
+  {
+    path: '/store/item',
+    exact: false,
+    component: () => <Suspense fallback={(<Loader />)}><ItemDetails /></Suspense>
   }
 ];
 const routesAuth = [
@@ -91,6 +97,11 @@ const routesAuth = [
     path: '/store',
     exact: true,
     component: () => <Suspense fallback={(<Loader />)}><Store /></Suspense>
+  },
+  {
+    path: '/store/item',
+    exact: false,
+    component: () => <Suspense fallback={(<Loader />)}><ItemDetails /></Suspense>
   },
   {
     path: '/user',
