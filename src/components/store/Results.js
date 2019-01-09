@@ -20,7 +20,8 @@ export class Results extends Component {
         {
           results.map((test, i) =>
 							<StoreCard
-								key={i}
+                key={i}
+                id={''+i}
 								title={test.title}
 								ques={test.num_questions}
 								style={test.styler}

@@ -1,3 +1,26 @@
+:root {
+    --searchbar-post-top: 8vh;
+    --searchbar-post-bottom: null;
+    --searchbar-icon-height: 56%;
+    --store-sidepanel-width: 240px;
+    /* --store-sidepanel-left-post: 0; */
+    --store-sidepanel-display: block;
+    --store-results-container-width: 80%;
+    
+}
+
+@media screen and (max-width: 440px){
+    :root {
+        --searchbar-post-top: 8vh;
+        --searchbar-post-bottom: 0;
+        --searchbar-icon-height: 44%;
+        --store-sidepanel-width: 240px;
+        /* --store-sidepanel-left-post: -220px; */
+        --store-sidepanel-display: none;
+        --store-results-container-width: 100%;
+    }
+}
+
 .SearchBar {
     display: flex;
     width: 100%;
@@ -6,15 +29,17 @@
     align-items: center;
     background-color: #FFFFFF;
     position: sticky;
+    top: var(--searchbar-post-top);
+    bottom: null;
     left: 0;
-    top: 8vh;
+    right: 0;
     box-sizing: border-box;
     z-index: 20;
-    box-shadow: 2px 2px 2px 1px #22222229;
+    box-shadow: 0px 2px 2px 1px #22222229;
 }
 
 .SearchBar .Icon {
-    height: 56%;
+    height: var(--searchbar-icon-height);
     margin: 1vh;
 }
 
@@ -49,11 +74,16 @@
     background: #fafafa;
 }
 .SidePanel {
-    width: 12%;
-    min-width: 200px;
-    height: 86vh;
+    /* display: flex;
+    flex-direction: column;
+    flex-grow: 1; */
+    display: var(--store-sidepanel-display);
+    width: 70%;
+    max-width: var(--store-sidepanel-width);
+    height: 100%;
     position: sticky;
-    left: 0;
+    left: var(--store-sidepanel-left-post);
+    margin-left: var(--store-sidepanel-left-post);
     top: 14vh;
     padding: 2vh;
     text-align: start;
@@ -62,10 +92,17 @@
     background: #FFFFFF;
     box-shadow: .5px .5px 1px 1px #CCCCCC29;
 }
+
+.showPanel {
+    display: block;
+}
+
 .ResultsContainer {
     display: flex;
-    width: 80%;
+    width: var(--store-results-container-width);
     margin-left: 2%;
     flex-wrap: wrap;
     text-align: start;
+    box-sizing: border-box
 }
+
