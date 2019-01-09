@@ -12,7 +12,7 @@ const StoreCard = (props) => {
     // let classyinfo = "Card-Info ";
     //if (props.style) classy = classy.concat(props.style)
     return (
-        <Link className="BookContainer" to='/store'><EB>
+        <Link className="BookContainer" to='/store/item'><EB>
             <Suspense className="BookCover" fallback={(<Loader className="BookCover previewtext" text="Getting Your Image" />)}>
                 <Img className="BookCover loaded" src={props.cover} alt="Cover of the book" />
             </Suspense>
@@ -25,7 +25,7 @@ const StoreCard = (props) => {
                 </div>
                 <div className="BookMeta" >
                     <h5>{props.pages + " Pages | ." + props.format}</h5>
-                    <h5>{props.rating + " " + props.reviews + " Reviews"}</h5>
+                    <h5>{props.rating + " | " + props.reviews + " Reviews"}</h5>
                 </div>
                 <div className="BookPricing">
                     <h2>{"Rs. "+props.price}</h2>
@@ -47,13 +47,12 @@ StoreCard.propTypes = {
     format: PropTypes.string,
     rating: PropTypes.string,
     reviews: PropTypes.string,
-    price: PropTypes.number,
+    price: PropTypes.string,
     bookmarked: PropTypes.bool,
     style: PropTypes.string,
 };
 
 StoreCard.defaultProps = {
-
     target: "12th Boards 2019",
     subject: "Mathematics",
     board: "CBSE",
@@ -62,7 +61,5 @@ StoreCard.defaultProps = {
     rating: "4.67",
     reviews: "29",
     price: "149",
-    bookmarked: PropTypes.bool,
-    style: PropTypes.string,
 };
 export default StoreCard

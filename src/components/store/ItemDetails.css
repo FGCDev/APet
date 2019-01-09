@@ -1,7 +1,7 @@
 :root {
-    --store-card-width: 400px;
-    --store-card-height: 300px;
-    --store-card-cover-width: 220px;
+    --store-card-width: 100%;
+    --store-card-height: 70vh;
+    --store-card-cover-width: 30vw;
     --store-card-bookmark-size: 48px;
 }
 
@@ -13,19 +13,26 @@
         --store-card-bookmark-size: 32px;
     }
 }
+.ItemContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* align-content: flex-start; */
+    flex-wrap: wrap;
+    width: var(--store-card-width);
+    height: var(--store-card-height);
+    padding: 16px;
+    margin-top: 4vh;
+    font-size: 2vh;
+    background: #FFFFFF;
+    box-shadow: .5px .5px 1px 1px #CCCCCC20;
+    box-sizing: border-box;
+}
 
 .BookContainer {
     display: flex;
     flex: 1;
-    width: var(--store-card-width);
-    height: var(--store-card-height);
-    max-height: var(--store-card-height);
-    padding: 8px;
-    font-size: 1.6vh;
-    justify-content: space-between; 
-    background: #FFFFFF;
-    box-shadow: .5px .5px 1px 1px #CCCCCC20;
-    margin: 2px;
+    
 }
 
 .BookContainer:visited{
@@ -38,7 +45,7 @@
 
 .BookCover {
     width: var(--store-card-cover-width);
-    max-width: 220px;
+    max-width: var(--store-card-cover-width);
     flex: 1;
     max-height: inherit;
     box-sizing: border-box;
@@ -46,10 +53,12 @@
 
 .BookDetails { 
     flex: 2; 
-    width: 120px; 
+    width: 30vw; 
     height: var(--store-card-height); 
+    align-items: flex-start;
     justify-content: space-between;
-    padding: 8px;
+    text-align: start;
+    padding: 16px;
     box-sizing: border-box;
 }
 
@@ -71,4 +80,9 @@
     height: var(--store-card-bookmark-size); 
     box-sizing: border-box;
     padding: inherit;
+}
+
+.BookReviews {
+    margin-top: 12vh;
+    width: 80vw;
 }

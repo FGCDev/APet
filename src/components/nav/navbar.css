@@ -1,3 +1,13 @@
+:root {
+    --nav-logo-min-width: 300px;
+}
+
+@media screen and (max-width: 440px){
+    :root {
+        --nav-logo-min-width: 200px;
+    }
+}
+
 .NavBar {
     position: sticky;
     top: 0;
@@ -27,7 +37,7 @@
 .logo {
     width: 16vh;
     /* max-height: inherit; */
-    min-width: 300px;
+    min-width: var(--nav-logo-min-width);
     margin: 8px;
 }
 
