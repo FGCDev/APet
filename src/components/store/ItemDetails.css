@@ -45,6 +45,7 @@
 
 .BookCover {
     width: var(--store-card-cover-width);
+    min-width: 30vw;
     max-width: var(--store-card-cover-width);
     flex: 1;
     max-height: inherit;

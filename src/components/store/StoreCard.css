@@ -45,8 +45,10 @@
 }
 
 .BookDetails { 
-    flex: 2; 
-    width: 120px; 
+    display: flex;
+    flex-direction: column; 
+    flex: 1.5;
+    width: 200px; 
     height: var(--store-card-height); 
     justify-content: space-between;
     padding: 8px;
@@ -55,15 +57,18 @@
 
 .BookIdentifiers {
     /* height: 40%; */
-    line-height: 1px;
+    width: 100%;
+    line-height: 1.2px;
 }
 
 .BookMeta {
-    height: 20%;
+    /* height: 20%; */
+    line-height: 1px;
 }
 
 .BookPricing {
-    height: 20%;
+    line-height: 1px;
+    /* height: 16%; */
 }
 
 .BookMark {

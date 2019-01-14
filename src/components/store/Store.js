@@ -8,8 +8,9 @@ import { Formik } from 'formik';
 import logo from '../../res/imgs/ap_logo_inv.png';
 import filter from '../../res/shapes/filter_optm.svg';
 import sort from '../../res/shapes/sort_optm.svg';
+import bag from '../../res/shapes/shopping-bag.svg';
 import '../nav/navbar.css';
-import '../store/store.css';
+import '../store/Store.css';
 import Results from './Results';
 
 const actfil = [
@@ -17,6 +18,8 @@ const actfil = [
 	{ label: 'act filters' },
 	{ label: 'active fils' },
 ];
+
+const itemsInBag = 4;
 
 // const searchFeild = (
 // 	<Formik initialValues={user /** { email, social } */}
@@ -88,11 +91,10 @@ const StoreNavBar = props => {
 			<div className="NavBar">
 				<Link className="logoContainer" to="/"><img className="logo" src={logo} alt="Logo for Aditya Publication © 2018" /></Link>
 				<div className="links-container">
-					{/* searchFeild */}
+					{/* searchFeild */<Link style={{color: "#FFFFFF"}} to="/users/checkout">Bag <span style={{backgroundColor: "#324a5c", padding: '4px', borderRadius: '50%' }}>{itemsInBag}</span></Link>}
 				</div>
 				<Link className="Link" to="/Dashboard"><Profile min={true} /></Link>
 			</div>
-
 		</React.Fragment>
 	)
 }
@@ -139,6 +141,10 @@ export class Store extends Component {
 				<div className="Results">
 					{storeControls}
 					<Results />
+				</div>
+				<div className="Fab">
+					<span className="Indicator">{itemsInBag}</span>
+					<img className="Bag" src={bag} alt="button to show your shopping bad details and take you ot the checkout screen" />
 				</div>
 			</React.Fragment>
 		)

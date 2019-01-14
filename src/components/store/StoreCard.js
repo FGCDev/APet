@@ -7,6 +7,8 @@ import EB from '../helpers/ErrorBoundary';
 import Loader from '../helpers/Loader';
 import bookmark from '../../res/shapes/baseline-bookmark_border-24px.svg';
 
+const showBookmark = false;
+
 const StoreCard = (props) => {
     // let classy = "Card ";
     // let classyinfo = "Card-Info ";
@@ -19,6 +21,7 @@ const StoreCard = (props) => {
             <div className="BookDetails">
                 <div className="BookIdentifiers">
                     <h3>{props.title}</h3>
+                    <br />
                     <h4>{props.target}</h4>
                     <h5>{props.subject}</h5>
                     <h5>{props.board}</h5>
@@ -31,7 +34,7 @@ const StoreCard = (props) => {
                     <h2>{"Rs. "+props.price}</h2>
                 </div>
             </div>
-            <img className="BookMark" src={bookmark} alt="toggle button for bookmarking the store items" />
+            {showBookmark? <img className="BookMark" src={bookmark} alt="toggle button for bookmarking the store items" /> : null}
         </EB></Link>
     );
 };
