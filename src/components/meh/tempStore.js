@@ -1,5 +1,7 @@
-import React, { Component } from 'react'
+import React, { Component, Suspense } from 'react'
 import { connect } from "react-redux";
+import ReactDOM from 'react-dom';
+import handleInitialStoreData from './../../actions/index.js';
 
 const StoreCard = props => {
     return (
@@ -20,20 +22,84 @@ const StoreCard = props => {
 }
 
 class TempStore extends Component {
+    componentWillMount(){
+        this.props.handle("maths");
+    }
+
     render() {
-        const booksArray = Object.values(this.props.book);
+        
+        /* const booksArray = Object.values(this.props.book);
+        console.log(booksArray);
+        let search = "Maths Book".toUpperCase().split(" ");
+        let id = [];
+        const handle = () => {
+            let j = 0; 
+            let t; 
+            
+            while(j<booksArray.length){
+                t = (booksArray[j].tags)
+
+                for(let key of t.keys()){
+                    t[key]=t[key].toUpperCase();
+                }
+                
+                for(let keys of search.keys()){
+                    if(t.includes(search[keys])){
+                        id.push(booksArray[j].id)
+                        console.log("Here1", id);
+                    }
+                }                 
+                j++;
+            }
+        }
+ */
+ /*        const isObjEmpty = (obj) => {
+            return new Promise((resolve, reject) => {
+              setTimeout(function() {
+                if (obj!==undefined&& obj!==null&& obj.length!==0) {
+                  resolve(obj);
+                } else {
+                  reject({
+                    error: 'empty obj'
+                  });
+                }
+              }, 1500);
+            });
+          }; */
+
+        /* const delayRender = () => {
+            if(id.length!==0){
+                console.log(id)
+                ReactDOM.render(booksArray.filter(fun).map((book, i) => <StoreCard key = {i} obj={book} />), document.getElementById('root2'))}
+        }
+
+        const fun = (item) =>{
+            if(id.includes(item.id)){
+                return item
+            }
+        } */
         return (
-            <div>
-                {booksArray.map((book, i) => <StoreCard key = {i} obj={book} />)}
+            <div id ="root2">
+                <Suspense fallback = {null} >
+                    {//setTimeout(handle, 0)
+                    }
+                    {//setTimeout(delayRender, 100)
+                    }
+                    
+                    {this.props.booksArray.map((book, i) => <StoreCard key = {i} obj={book} />)}
+                </Suspense>
             </div>
-        )
+        );
     }
 }
 
 function mapStateToProps(state) {
     return {
-        book: state.store,
+        booksArray: Object.values(state.store),
     }
 }
+const mapDispatchToProps = dispatch => ({
+    handle: message => dispatch(handleInitialStoreData(message)),
+  })
 
-export default connect(mapStateToProps)(TempStore);
+export default connect(mapStateToProps, mapDispatchToProps)(TempStore);

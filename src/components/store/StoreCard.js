@@ -14,14 +14,14 @@ const StoreCard = (props) => {
     return (
         <Link className="BookContainer" to='/store/item'><EB>
             <Suspense className="BookCover" fallback={(<Loader className="BookCover previewtext" text="Getting Your Image" />)}>
-                <Img className="BookCover loaded" src={props.cover} alt="Cover of the book" />
+                <Img className="BookCover loaded" src={props.obj.cover} alt="Cover of the book" />
             </Suspense>
             <div className="BookDetails">
                 <div className="BookIdentifiers">
-                    <h3>{props.title}</h3>
-                    <h4>{props.target}</h4>
-                    <h5>{props.subject}</h5>
-                    <h5>{props.board}</h5>
+                    <h3>{props.obj.title}</h3>
+                    <h4>{props.obj.target}</h4>
+                    <h5>{props.obj.subject}</h5>
+                    <h5>{props.obj.board}</h5>
                 </div>
                 <div className="BookMeta" >
                     <h5>{props.pages + " Pages | ." + props.format}</h5>

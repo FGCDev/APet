@@ -17,7 +17,7 @@ import {
 import EB from './helpers/ErrorBoundary';
 import Loader from './helpers/Loader';
 import handleInitialStoreData from './../actions/index.js';
-
+import TempStore from './meh/tempStore';
 const Landing = lazy(() => import('./newer'));
 const Store = lazy(() => import('./store/Store'));
 const ItemDetails = lazy(() => import('./store/ItemDetails'));
@@ -81,7 +81,13 @@ const routesNew = [
     path: '/store/item',
     exact: false,
     component: () => <Suspense fallback={(<Loader />)}><ItemDetails /></Suspense>
-  }
+  },
+  {
+    path: '/tempStore',
+    exact: true,
+    //sidebar: () => <div> Default Route </div>,
+    component: () => <Suspense fallback={(<Loader />)}><TempStore /></Suspense>
+  },
 ];
 const routesAuth = [
   {
@@ -149,8 +155,11 @@ class App extends Component {
     //     this.props.history.push("/");
     //   }
     // })
+    //this.props.dispatch(handleInitialStoreData());
   }
-
+componentWillMount(){
+  //this.props.dispatch(handleInitialStoreData());
+}
   componentWillUnmount() {
     window.removeEventListener('resize', this.onWindowResize);
   }
