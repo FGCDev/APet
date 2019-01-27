@@ -16,10 +16,12 @@ import {
 // import Store from './Store';
 import EB from './helpers/ErrorBoundary';
 import Loader from './helpers/Loader';
-
+import handleInitialStoreData from './../actions/index.js';
+import TempStore from './meh/tempStore';
 const Landing = lazy(() => import('./newer'));
 const Store = lazy(() => import('./store/Store'));
 const ItemDetails = lazy(() => import('./store/ItemDetails'));
+
 
 // const Landing = ({ match }) => {
 //   //const location = props.match.path;
@@ -81,10 +83,18 @@ const routesNew = [
     component: () => <Suspense fallback={(<Loader />)}><ItemDetails /></Suspense>
   },
   {
+
     path: '/store/checkout',
     exact: true,
     component: () => <Suspense fallback={(<Loader />)}><ItemDetails /></Suspense>
   }
+
+    path: '/tempStore',
+    exact: true,
+    //sidebar: () => <div> Default Route </div>,
+    component: () => <Suspense fallback={(<Loader />)}><TempStore /></Suspense>
+  },
+
 ];
 const routesAuth = [
   {
@@ -157,8 +167,11 @@ class App extends Component {
     //     this.props.history.push("/");
     //   }
     // })
+    //this.props.dispatch(handleInitialStoreData());
   }
-
+componentWillMount(){
+  //this.props.dispatch(handleInitialStoreData());
+}
   componentWillUnmount() {
     window.removeEventListener('resize', this.onWindowResize);
   }

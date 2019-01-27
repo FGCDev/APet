@@ -21,15 +21,7 @@ export class Results extends Component {
           results.map((test, i) =>
 							<StoreCard
                 key={i}
-                id={''+i}
-								title={test.title}
-								ques={test.num_questions}
-								style={test.styler}
-								cover={test.coverURL}
-								level={test.level}
-								type={test.type}
-								price={test.price}
-								updated={test.updated} />
+                obj={test} />
 						)
         }
       </div>

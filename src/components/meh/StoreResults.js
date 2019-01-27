@@ -10,6 +10,7 @@ import { Img } from 'the-platform';
 import EB from '../helpers/ErrorBoundary';
 import Loader from '../helpers/Loader';
 import StoreCard from '../store/StoreCard';
+import handleInitialStoreData from './../../actions/index.js';
 
 // const Card = (props) => {
 // 	let classy = "Card ";
@@ -54,7 +55,8 @@ export class StoreResults extends PureComponent {
 
 	//LifeCycle Methods
 	componentDidMount() {
-		console.log("[StoreResults.js] props are: ", this.props);
+		//console.log("[StoreResults.js] props are: ", this.props);
+		this.props.handle("maths");
 	}
 
 	componentDidCatch() {
@@ -82,7 +84,7 @@ export class StoreResults extends PureComponent {
 				<h3>Showing Results for: {}</h3>
 				<EB>
 					<div className="Store-Results-List">
-						{this.props.results.map((test, i) =>
+						{this.props.booksArray.map((test, i) =>
 							<StoreCard
 								key={i}
 								title={test.title}
@@ -114,11 +116,13 @@ StoreResults.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
+	booksArray: Object.values(state.store),
 
 })
 
-const mapDispatchToProps = {
+const mapDispatchToProps = dispatch => ({
+	handle: message => dispatch(handleInitialStoreData(message)),
 
-}
+})
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(StoreResults));

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+
 // import Profile from '../nav/Profiler';
 // import { Link/*, withRouter*/ } from 'react-router-dom'
 // import { Formik } from 'formik';
@@ -14,6 +15,18 @@ import { connect } from 'react-redux'
 import '../store/Store.css';
 // import '../nav/navbar.css';
 import './SearchBar.css'
+
+
+import Profile from '../nav/Profiler';
+import { Link/*, withRouter*/ } from 'react-router-dom'
+import { Formik } from 'formik';
+import handleInitialStoreData from './../../actions/index.js';
+//import SearBar from './SearchBar.js';
+import logo from '../../res/imgs/ap_logo_inv.png';
+import filter from '../../res/shapes/filter_optm.svg';
+import sort from '../../res/shapes/sort_optm.svg';
+import '../nav/navbar.css';
+import '../store/store.css';
 
 import Results from './Results';
 import StoreNavBar from './StoreNavBar';
@@ -129,6 +142,10 @@ export class Store extends Component {
 	static propTypes = {
 		user: PropTypes.object,
 	}
+	componentDidMount() {
+		//console.log("[StoreResults.js] props are: ", this.props);
+		this.props.handle("maths");
+	}
 
 	render() {
 		let searchParams = [
@@ -154,11 +171,13 @@ export class Store extends Component {
 
 		return (
 			<React.Fragment>
+
 				<StoreNavBar itemsInBag={itemsInBag}/>
+
 				<SearchBar />
 				<div className="Results">
 					{storeControls}
-					<Results />
+					<Results results={this.props.booksArray} />
 				</div>
 				<BagFab itemsInBag={itemsInBag}/>
 			</React.Fragment>
@@ -167,7 +186,12 @@ export class Store extends Component {
 }
 
 const mapStateToProps = (state) => ({
+	booksArray: Object.values(state.store),
+})
+
+const mapDispatchToProps = dispatch => ({
+	handle: message => dispatch(handleInitialStoreData(message)),
 
 })
 
-export default connect(mapStateToProps)(Store)
+export default connect(mapStateToProps, mapDispatchToProps)(Store)

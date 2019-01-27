@@ -10,6 +10,7 @@ import bookmark from '../../res/shapes/baseline-bookmark_border-24px.svg';
 const showBookmark = false;
 
 const StoreCard = (props) => {
+
 	// let classy = "Card ";
 	// let classyinfo = "Card-Info ";
 	//if (props.style) classy = classy.concat(props.style)
@@ -36,6 +37,7 @@ const StoreCard = (props) => {
 			{showBookmark ? <img className="BookMark" src={bookmark} alt="toggle button for bookmarking the store items" /> : null}
 		</EB></Link>
 	);
+
 };
 
 StoreCard.propTypes = {
