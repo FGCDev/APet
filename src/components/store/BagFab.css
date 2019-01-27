@@ -1,0 +1,39 @@
+.Fab {
+	position: sticky;
+	left: 98%;
+	bottom: 20px;
+	margin-right: 16px;
+	width: 32px;
+	height: 32px;
+	display: inline-block;
+	background-color: #2d65ff;
+	text-decoration: none;
+	padding: 1rem;
+	border-radius: 50%;
+	box-shadow: 1px 1px 8px 1px #00000049;
+	transition: all ease 0.4s;
+}
+
+.Bag {
+	width: 32px;
+	height: 32px;
+	/* border-radius: 50%; */
+	color: #ffffff;
+	
+}
+
+.Indicator {
+	width: 24px;
+	height: 24px;
+	position: absolute;
+  	top: 0;
+	left: 0;
+	font-size: 2vh;
+	font-weight: 600;
+	font-stretch: condensed;
+	border-radius: 50%;
+	background-color: #ffffff;
+	color: #2d65ff;
+	box-shadow: -1px -1px 4px 1px #2d65ff29;
+	z-index: 10;
+}

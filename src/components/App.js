@@ -79,6 +79,11 @@ const routesNew = [
     path: '/store/item',
     exact: false,
     component: () => <Suspense fallback={(<Loader />)}><ItemDetails /></Suspense>
+  },
+  {
+    path: '/store/checkout',
+    exact: true,
+    component: () => <Suspense fallback={(<Loader />)}><ItemDetails /></Suspense>
   }
 ];
 const routesAuth = [
@@ -117,6 +122,11 @@ const routesAuth = [
     path: `/user/profile`,
     exact: true,
     component: () => <h2>Profile</h2>
+  },
+  {
+    path: '/store/checkout',
+    exact: true,
+    component: () => <Suspense fallback={(<Loader />)}><ItemDetails /></Suspense>
   }
 ];
 let routes = [];

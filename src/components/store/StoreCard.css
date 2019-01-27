@@ -1,6 +1,6 @@
 :root {
-    --store-card-width: 400px;
-    --store-card-height: 300px;
+    --store-card-width: 500px;
+    --store-card-height: 320px;
     --store-card-cover-width: 220px;
     --store-card-bookmark-size: 48px;
 }
@@ -17,13 +17,14 @@
 .BookContainer {
     display: flex;
     flex: 1;
-    width: var(--store-card-width);
+    min-width: var(--store-card-width);
     height: var(--store-card-height);
     max-height: var(--store-card-height);
     padding: 8px;
     font-size: 1.6vh;
     justify-content: space-between; 
     background: #FFFFFF;
+    box-sizing: border-box;
     box-shadow: .5px .5px 1px 1px #CCCCCC20;
     margin: 2px;
 }
@@ -33,7 +34,7 @@
 }
 
 .BookContainer:nth-of-type(even){
-    background: #FDFDFA;
+    background: #FDFDFD;
 }
 
 .BookCover {
@@ -42,6 +43,7 @@
     flex: 1;
     max-height: inherit;
     box-sizing: border-box;
+    box-shadow: 2px 0.5px 1px 1px #CCCCCC20;
 }
 
 .BookDetails { 
@@ -68,6 +70,7 @@
 
 .BookPricing {
     line-height: 1px;
+    margin-bottom: 2%;
     /* height: 16%; */
 }
 
