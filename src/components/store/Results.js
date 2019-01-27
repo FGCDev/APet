@@ -13,6 +13,9 @@ export class Results extends Component {
   static defaultProps = {
     results: dummyData
   }
+  componentDidMount () {
+    console.log(this.props.results);
+  }
   render() {
     const { results } = this.props;
     return (
