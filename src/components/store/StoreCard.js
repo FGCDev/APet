@@ -19,7 +19,7 @@ const StoreCard = (props) => {
 		<p>{props.coverURL}</p>
 		<EB>
 			<Suspense className="BookCover" fallback={(<Loader className="BookCover previewtext" text="Getting Your Image" />)}>
-				<Img className="BookCover loaded" src={props.obj.coverURL} alt="Cover of the book" />
+				<Img className="BookCover loaded" src={props.obj.cover} alt="Cover of the book" />
 			</Suspense>
 			<div className="BookDetails">
 				<div className="BookIdentifiers">

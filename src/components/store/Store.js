@@ -63,7 +63,7 @@ export class Store extends Component {
 	}
 	componentDidMount() {
 		//console.log("[StoreResults.js] props are: ", this.props);
-		//this.props.handle("maths");
+		this.props.handle("maths");
 	}
 
 	render() {
@@ -94,7 +94,7 @@ export class Store extends Component {
 				<SearchBar />
 				<div className="Results">
 					{storeControls}
-					<Results />
+					<Results results={this.props.booksArray}/>
 				</div>
 				<BagFab itemsInBag={itemsInBag}/>
 			</React.Fragment>
