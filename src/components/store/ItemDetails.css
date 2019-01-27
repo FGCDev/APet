@@ -40,6 +40,7 @@
     min-width: 30vw;
     max-width: var(--item-card-cover-width);
     flex: 1;
+    background-size: cover;
     max-height: 70vh;
     box-sizing: border-box;
 }

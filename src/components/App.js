@@ -83,12 +83,10 @@ const routesNew = [
     component: () => <Suspense fallback={(<Loader />)}><ItemDetails /></Suspense>
   },
   {
-
     path: '/store/checkout',
     exact: true,
     component: () => <Suspense fallback={(<Loader />)}><ItemDetails /></Suspense>
-  }
-
+  }, {
     path: '/tempStore',
     exact: true,
     //sidebar: () => <div> Default Route </div>,
@@ -144,8 +142,8 @@ let routes = [];
 if (!firebase.auth().currentUser) {
   // User is signed in.
   routes = routesNew
-} 
-else{
+}
+else {
   routes = routesAuth
 }
 
@@ -169,9 +167,9 @@ class App extends Component {
     // })
     //this.props.dispatch(handleInitialStoreData());
   }
-componentWillMount(){
-  //this.props.dispatch(handleInitialStoreData());
-}
+  componentWillMount() {
+    //this.props.dispatch(handleInitialStoreData());
+  }
   componentWillUnmount() {
     window.removeEventListener('resize', this.onWindowResize);
   }
@@ -180,16 +178,16 @@ componentWillMount(){
     return (
       <div className="App">
         <EB>
-        <Switch>
-          {routes.map((route) => (
-            <Route
-              key={route.path}
-              path={route.path}
-              exact={route.exact}
-              component={route.component} //render={(props) => <Comp {...props} /*Pass Any Additional Props*/ />}
-            />
-          ))}
-        </Switch>
+          <Switch>
+            {routes.map((route) => (
+              <Route
+                key={route.path}
+                path={route.path}
+                exact={route.exact}
+                component={route.component} //render={(props) => <Comp {...props} /*Pass Any Additional Props*/ />}
+              />
+            ))}
+          </Switch>
         </EB>
       </div>
     );

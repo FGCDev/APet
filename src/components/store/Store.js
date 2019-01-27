@@ -12,21 +12,15 @@ import { connect } from 'react-redux'
 // import bag from '../../res/shapes/shopping-bag.svg';
 // import add from '../../res/shapes/baseline-add-w-o.svg';
 // import clear from '../../res/shapes/baseline-clear-w-o.svg';
-import '../store/Store.css';
-// import '../nav/navbar.css';
+
+import './Store.css';
 import './SearchBar.css'
 
-
-import Profile from '../nav/Profiler';
-import { Link/*, withRouter*/ } from 'react-router-dom'
-import { Formik } from 'formik';
 import handleInitialStoreData from './../../actions/index.js';
-//import SearBar from './SearchBar.js';
-import logo from '../../res/imgs/ap_logo_inv.png';
-import filter from '../../res/shapes/filter_optm.svg';
-import sort from '../../res/shapes/sort_optm.svg';
-import '../nav/navbar.css';
-import '../store/store.css';
+import dummyData from '../../res/dummy-test-store';
+// import logo from '../../res/imgs/ap_logo_inv.png';
+// import filter from '../../res/shapes/filter_optm.svg';
+// import sort from '../../res/shapes/sort_optm.svg';
 
 import Results from './Results';
 import StoreNavBar from './StoreNavBar';
@@ -37,6 +31,88 @@ import Sorting from './Sorting';
 import BagFab from './BagFab';
 
 const itemsInBag = 4;
+
+const SearchBar = props => {
+	const propLogger = (
+		<p>{JSON.stringify(props)}</p>
+	)
+
+	return	(
+		<div className="SearchBar">
+			<Filter />
+			<Sorting />
+		</div>
+	)
+}
+
+SearchBar.propTypes = {
+	filters: PropTypes.array,
+	activeFilters: PropTypes.array,
+	sortOpts: PropTypes.array,
+	activeSort: PropTypes.string,
+	sortOrder: PropTypes.bool,
+}
+
+SearchBar.defaultProps = { }
+
+
+
+export class Store extends Component {
+	static propTypes = {
+		user: PropTypes.object,
+	}
+	componentDidMount() {
+		//console.log("[StoreResults.js] props are: ", this.props);
+		//this.props.handle("maths");
+	}
+
+	render() {
+		let searchParams = [
+			<h3>Advanced Filters</h3>,
+			<p>Recommended Tests</p>,
+			<p>No. of Questions</p>,
+			<p>Test Difficulty</p>,
+			<p>Year Published</p>,
+			<p>Test Duration</p>,
+			<p>Question Types</p>,
+			<p>Test Patterns</p>,
+			<br />,
+			<h3>Trending</h3>,
+			<p>Recommended Tests</p>,
+			<p>No. of Questions</p>,
+			<p>Test Difficulty</p>,
+		]
+		let storeControls = (
+			<aside className="SidePanel">
+				{searchParams}
+			</aside>
+		)
+
+		return (
+			<React.Fragment>
+				<StoreNavBar itemsInBag={itemsInBag}/>
+				<SearchBar />
+				<div className="Results">
+					{storeControls}
+					<Results />
+				</div>
+				<BagFab itemsInBag={itemsInBag}/>
+			</React.Fragment>
+		)
+	}
+}
+
+const mapStateToProps = (state) => ({
+	booksArray: Object.values(state.store),
+})
+
+const mapDispatchToProps = dispatch => ({
+	handle: message => dispatch(handleInitialStoreData(message)),
+
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Store)
+
 
 // const searchFeild = (
 // 	<Formik initialValues={user /** { email, social } */}
@@ -71,31 +147,6 @@ const itemsInBag = 4;
 // 		)} 
 // />);
 
-
-
-
-const SearchBar = props => {
-	const propLogger = (
-		<p>{JSON.stringify(props)}</p>
-	)
-
-	return	(
-		<div className="SearchBar">
-			<Filter />
-			<Sorting />
-		</div>
-	)
-}
-
-SearchBar.propTypes = {
-	filters: PropTypes.array,
-	activeFilters: PropTypes.array,
-	sortOpts: PropTypes.array,
-	activeSort: PropTypes.string,
-	sortOrder: PropTypes.bool,
-}
-
-SearchBar.defaultProps = { }
 
 
 // const StoreNavBar = props => {
@@ -137,61 +188,3 @@ SearchBar.defaultProps = { }
 // 	items: PropTypes.array,
 // }
 // export default BagFab
-
-export class Store extends Component {
-	static propTypes = {
-		user: PropTypes.object,
-	}
-	componentDidMount() {
-		//console.log("[StoreResults.js] props are: ", this.props);
-		this.props.handle("maths");
-	}
-
-	render() {
-		let searchParams = [
-			<h3>Advanced Filters</h3>,
-			<p>Recommended Tests</p>,
-			<p>No. of Questions</p>,
-			<p>Test Difficulty</p>,
-			<p>Year Published</p>,
-			<p>Test Duration</p>,
-			<p>Question Types</p>,
-			<p>Test Patterns</p>,
-			<br />,
-			<h3>Trending</h3>,
-			<p>Recommended Tests</p>,
-			<p>No. of Questions</p>,
-			<p>Test Difficulty</p>,
-		]
-		let storeControls = (
-			<aside className="SidePanel">
-				{searchParams}
-			</aside>
-		)
-
-		return (
-			<React.Fragment>
-
-				<StoreNavBar itemsInBag={itemsInBag}/>
-
-				<SearchBar />
-				<div className="Results">
-					{storeControls}
-					<Results results={this.props.booksArray} />
-				</div>
-				<BagFab itemsInBag={itemsInBag}/>
-			</React.Fragment>
-		)
-	}
-}
-
-const mapStateToProps = (state) => ({
-	booksArray: Object.values(state.store),
-})
-
-const mapDispatchToProps = dispatch => ({
-	handle: message => dispatch(handleInitialStoreData(message)),
-
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(Store)

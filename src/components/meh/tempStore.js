@@ -1,6 +1,6 @@
 import React, { Component, Suspense } from 'react'
 import { connect } from "react-redux";
-import ReactDOM from 'react-dom';
+// import ReactDOM from 'react-dom';
 import handleInitialStoreData from './../../actions/index.js';
 
 const StoreCard = props => {
