@@ -47,7 +47,7 @@
     width: 60%;
     justify-content: flex-end;
     align-items: flex-start;
-    flex-grow: 1;
+    flex: 1;
     /* background-color: azure; */
 }
 
@@ -81,12 +81,10 @@ a{
 }
 .profile {
     display: flex;
-    top: 0;
-    right: 0;
     color: azure;
     height: inherit;
     width: 24vh;
-    min-width: 200px;
+    min-width: 280px;
     align-items: flex-start;
     border: .4vh solid #ffffff;
     z-index: 100;
@@ -121,6 +119,7 @@ img.dp {
     height: 8.1vh;
     margin: .5vh;
     clip-path: polygon(0% 0%, 100% 0%, 100% 88%, 50% 100%, 0 88%);
+    box-shadow: 2px 2px 2px 1px #22222269;
     /* margin-bottom: .4vh; */
     /* background-size: cover;  */
     /* background-clip: content-box; */

@@ -83,11 +83,18 @@ const routesNew = [
     component: () => <Suspense fallback={(<Loader />)}><ItemDetails /></Suspense>
   },
   {
+
+    path: '/store/checkout',
+    exact: true,
+    component: () => <Suspense fallback={(<Loader />)}><ItemDetails /></Suspense>
+  }
+
     path: '/tempStore',
     exact: true,
     //sidebar: () => <div> Default Route </div>,
     component: () => <Suspense fallback={(<Loader />)}><TempStore /></Suspense>
   },
+
 ];
 const routesAuth = [
   {
@@ -125,6 +132,11 @@ const routesAuth = [
     path: `/user/profile`,
     exact: true,
     component: () => <h2>Profile</h2>
+  },
+  {
+    path: '/store/checkout',
+    exact: true,
+    component: () => <Suspense fallback={(<Loader />)}><ItemDetails /></Suspense>
   }
 ];
 let routes = [];

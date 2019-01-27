@@ -161,7 +161,7 @@ const Footer = props => {
 		</div>
 	)
 }
-export class newer extends Component {
+class newer extends Component {
 	static propTypes = {
 		// prop: PropTypes
 	}

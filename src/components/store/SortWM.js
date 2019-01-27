@@ -35,8 +35,8 @@ SortWM.propTypes = {
 
 SortWM.defaultProps = {
     size: 240,
-		color: '#020202'
-		colorActive: '#2D65FF'
+	color: '#020202',
+	colorActive: '#2D65FF',
 }
 
 export default SortWM

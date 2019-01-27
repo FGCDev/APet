@@ -57,6 +57,15 @@
   color: #61dafb;
 }
 
+.BtnPrimary {
+  color: white;
+  background-color: #2d64ff;
+}
+
+.BtnPrimaryInv {
+  background-color: white;
+  color:#2d64ff;
+}
 /* @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
