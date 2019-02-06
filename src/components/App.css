@@ -1,3 +1,8 @@
+* a, a:visited {
+  text-decoration: none; 
+  color: inherit;
+}
+
 .App {
   display: flex;
   flex: 1;
@@ -57,14 +62,29 @@
   color: #61dafb;
 }
 
-.BtnPrimary {
+.active {
+  color:#2d64ff;
+}
+
+.BackPrimary {
   color: white;
   background-color: #2d64ff;
 }
 
-.BtnPrimaryInv {
+.BackPrimaryInv {
   background-color: white;
   color:#2d64ff;
+}
+
+.btnRounded {
+  border-radius: .5rem; 
+  margin: 0 8px;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.btnOutline {
+  border: 1px solid #2d64ff
 }
 /* @keyframes App-logo-spin {
   from {

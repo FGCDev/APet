@@ -17,7 +17,7 @@ import './Store.css';
 import './SearchBar.css'
 
 import handleInitialStoreData from './../../actions/index.js';
-import dummyData from '../../res/dummy-test-store';
+// import dummyData from '../../res/dummy-test-store';
 // import logo from '../../res/imgs/ap_logo_inv.png';
 // import filter from '../../res/shapes/filter_optm.svg';
 // import sort from '../../res/shapes/sort_optm.svg';
@@ -33,9 +33,9 @@ import BagFab from './BagFab';
 const itemsInBag = 4;
 
 const SearchBar = props => {
-	const propLogger = (
-		<p>{JSON.stringify(props)}</p>
-	)
+	// const propLogger = (
+	// 	<p>{JSON.stringify(props)}</p>
+	// )
 
 	return	(
 		<div className="SearchBar">

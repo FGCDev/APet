@@ -16,7 +16,7 @@
 
 .BookContainer {
     display: flex;
-    flex: 1;
+    flex-shrink: 1;
     min-width: var(--store-card-width);
     height: var(--store-card-height);
     max-height: var(--store-card-height);

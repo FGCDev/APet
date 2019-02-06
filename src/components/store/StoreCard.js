@@ -23,17 +23,17 @@ const StoreCard = (props) => {
 			</Suspense>
 			<div className="BookDetails">
 				<div className="BookIdentifiers">
-					<h3>{props.obj.title}</h3>
+					<h3>{props.title}</h3>
 					<br />
-					<h4>{props.obj.target}</h4>
-					<h5>{props.obj.subject + " | " + props.obj.board}</h5>
+					<h4>{props.target}</h4>
+					<h5>{props.subject + " | " + props.board}</h5>
 				</div>
 				<div className="BookMeta" >
-					<h5>{props.obj.pages + " Pages | ." + props.obj.format}</h5>
-					<h5>{props.obj.rating + " | " + props.obj.reviews + " Reviews"}</h5>
+					<h5>{props.pages + " Pages | ." + props.format}</h5>
+					<h5>{props.rating + " | " + props.reviews + " Reviews"}</h5>
 				</div>
 				<div className="BookPricing">
-					<h2>{"Rs. " + props.obj.price}</h2>
+					<h2>{"Rs. " + props.price}</h2>
 				</div>
 			</div>
 			{showBookmark ? <img className="BookMark" src={bookmark} alt="toggle button for bookmarking the store items" /> : null}

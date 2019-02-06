@@ -12,45 +12,14 @@ import '../nav/navbar.css';
 import './ItemDetails.css'
 import StoreNavBar from './StoreNavBar';
 import BagFab from './BagFab';
+import ReviewsContainer from './ReviewsContainer';
 
 const itemsInBag = 4;
 
-const ReviewItems = props => {
-  return (
-    <div>
-      I'm a simple Review
-    </div>
-  )
-}
-
-ReviewItems.propTypes = {
-
-}
-
-// export default ReviewItems
-
-
-const ReviewsContainer = props => {
-  return (
-    <div className="DetailsBookReviews">
-      Are you ready for some awesome Reviews????? <hr />
-      Are you really sure?  <hr />
-      Why do you even care about Public Opinion? <hr />
-      You really need to learn the art of NGAF <hr />
-      You should go learn from the great oyu... <hr />
-      Why are you still here. Just go. <hr />
-      NOW!!! <hr />
-      <ReviewItems />
-    </div>
-  )
-}
-
-ReviewsContainer.propTypes = {
-
-}
-
-// export default ReviewsContainer
-
+const slickArrow = (<span className="Symbol">🡐</span>)
+// const thickArrow = (<span className="Symbol">🠘</span>)
+const showButton = (<span className="Symbol">▼</span>);
+const hideButton = (<span className="Symbol">△</span>);;
 
 class ItemDetails extends Component {
   static propTypes = {
@@ -67,6 +36,8 @@ class ItemDetails extends Component {
     price: PropTypes.string,
     bookmarked: PropTypes.bool,
     style: PropTypes.string,
+    source: PropTypes.string,
+    description: PropTypes.string,
   }
 
   static defaultProps = {
@@ -80,54 +51,113 @@ class ItemDetails extends Component {
     rating: "4.67",
     reviews: "29",
     price: "149",
-  };
-
-  state = {
-    showReviews: false
+    source: "Maths 2019 Boards",
+    description: "I'm an awesome book. If you have a problem with that, then you can deal with it yourself you blundering baboon.",
   }
 
+  state = {
+    showReviews: true,
+    showDetails: true,
+  }
 
+  toggleDetails = () => {
+    console.log('toggling details', this.state.showDetails)
+    this.setState(prevState => ({ ...prevState, showDetails: !prevState.showDetails }))
+    // console.log('toggled details', this.state.showDetails)
+  }
+
+  toggleReviews = () => {
+    this.setState(prevState => ({ ...prevState, showReviews: !prevState.showReviews }))
+  }
+
+  componentDidMount() {
+    //fetchDetails
+    //fetchReviews
+  }
 
   render() {
+    let moreDetails = (
+      <section className="ItemSpecs">
+        <details>
+          <summary>Table of Contents</summary>
+          <h6>I've got stuff</h6>
+        </details>
+        <hr />
+        <details show={true}>
+          <summary>Active Offers</summary>
+          <h6>Here are some amazing offers for you</h6>
+        </details>
+      </section>
+    );
+    
+    let toggleSpecs = (this.state.showDetails ? (
+      <React.Fragment>
+        <span className='active clickable' onClick={() => this.toggleDetails()}>
+          Hide Details {hideButton}
+        </span>
+      </React.Fragment>
+      ):(
+      <React.Fragment>
+        <span className='active clickable' onClick={() => this.toggleDetails()}>
+          Show Details {showButton}
+        </span>
+      </React.Fragment>))
+
+    let reviews = (<ReviewsContainer />);
+
+    const itemDetails = (
+      <div className="ItemDetailsLayout"><EB>
+        <div className="ItemCoverContainer">
+          <Suspense fallback={(<Loader className="ItemCover previewtext" text="Getting Your Image" />)}>
+            <Img className="ItemCover loaded" src={this.props.cover} alt="Cover of the book" />
+          </Suspense>
+        </div></EB><EB>
+          <div className="ItemInfoContainer">
+            <div className="ItemIdentifiers">
+              <div>
+                <span className="title">{this.props.title}</span>
+                <div className="subs">{this.props.subject + ' (' + this.props.board + ')'}</div>
+                <span className="target">{this.props.target}</span>
+              </div>
+              <div className='mar-tb-2rem'>
+                <span className="meta">{this.props.pages + " Pages (." + this.props.format + ")"}</span><br />
+                <span className="review">{"Avg. Rating: " + this.props.rating + " | "}
+                  <a href="#reviews" onClick={() => this.toggleReviews()}>
+                    <span className='active clickable'>{"Read Reviews (" + this.props.reviews + ")"}</span>
+                  </a>
+                </span>
+              </div>
+            </div>
+            
+            <div className="ItemDescription">
+              <p>{this.props.description}</p>
+              {/*toggleSpecs*/}
+            </div>
+            <div className="ItemPricing mar-t-16px">
+              <span className='itemPrice'>{"₹ " + this.props.price}</span>
+              <div className='DetailsBuyActions mar-t-16px'>
+                <p className="BackPrimaryInv btnRounded btnOutline AddBag">Add to Bag</p>
+                <p className="BackPrimary btnRounded QuickBuy">Quick Buy</p>
+              </div>
+            </div>
+          </div>
+          {/*<img className="DetailsBookMark" src={bookmark} alt="toggle button for bookmarking the store items" />*/}</EB><EB>
+          {this.state.showDetails && moreDetails}</EB>
+      </div>
+    );
+
     return (
       <React.Fragment>
-        <StoreNavBar itemsInBag={itemsInBag}/>
-        <div style={{display: "flex", height: "100%", width: "100%", alignItems: "center"}}>
-          <div className="LHS">
-          <div className="DetailsItemContainer">
-              <EB>
-                <Suspense className="DetailsBookCover" fallback={(<Loader className="DetailsBookCover previewtext" text="Getting Your Image" />)}>
-                  <Img className="DetailsBookCover loaded" src={this.props.cover} alt="Cover of the book" />
-                </Suspense>
-              </EB><EB>
-                <div className="DetailsBookInfo">
-                  <div className="DetailsBookIdentifiers">
-                    <h3>{this.props.title}</h3>
-                    <h4>{this.props.target}</h4>
-                    <h5>{this.props.subject}</h5>
-                    <h5>{this.props.board}</h5>
-                  </div>
-                  <div className="DetailsBookMeta" >
-                    <h5>{this.props.pages + " Pages | ." + this.props.format}</h5>
-                    <h5>{"Avg. Rating: " + this.props.rating + " | " + this.props.reviews + " Reviews"} {" ("}<a href="#reviews">browse reviews</a>{")"}</h5>
-                  </div>
-                  <div className="DetailsBookPricing">
-                    <h2>{"Rs. " + this.props.price}</h2>
-                  </div>
-                </div>
-                {/*<img className="DetailsBookMark" src={bookmark} alt="toggle button for bookmarking the store items" />*/}
-              </EB>
-            </div>
-            <EB>
-              <ReviewsContainer />
-            </EB>
-          </div>
-          <div className="RHS">
-            I'm just conditional
-            
-          </div>
-          <BagFab itemsInBag={itemsInBag}/>
-        </div>
+        <StoreNavBar itemsInBag={itemsInBag} />
+        <nav className="HistoryBar">
+          <Link to='/store'>{slickArrow} Back to Store</Link>
+          <span className="HistorySearch">Last Search: "{this.props.source}"</span>
+        </nav>
+        <main className="ItemDetailsContainer">
+          {itemDetails}
+          <EB> {this.state.showReviews && reviews} </EB>
+        </main>
+        <BagFab itemsInBag={itemsInBag} />
       </React.Fragment>
     )
   }

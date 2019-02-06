@@ -29,7 +29,7 @@ export class StoreNavBar extends Component {
 						{/* searchFeild */
 							<Link style={{ display: 'flex', color: "#FFFFFF", padding: '4px', }} to="/users/checkout">
 								<div> Your Bag </div>
-								<div style={{ minWidth: '2.8vh', minHeight: '2.8vh', backgroundColor: "#00000039",  borderRadius: '50%', marginLeft:'4px', alignItems:'center'}}>
+								<div className='count'>
 									{this.props.itemsInBag}
 								</div>
 							</Link>}

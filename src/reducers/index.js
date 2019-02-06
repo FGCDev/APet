@@ -1,11 +1,13 @@
 import { combineReducers } from 'redux';
 import users from './users';
 import store from './store';
+import studio from './studio';
 import { loadingBarReducer } from 'react-redux-loading';
 
 export default combineReducers({
   users,
   store,
+  studio,
   loadingBar: loadingBarReducer
 })
 

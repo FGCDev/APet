@@ -1,86 +1,227 @@
 :root {
-    --item-card-width: 100%;
-    --item-card-height: 90vh;
-    --item-card-cover-width: 30vw;
-    --item-card-bookmark-size: 48px;
+	--item-details-lay-height: 80vh;
+	--item-details-height: 100%;
+	--item-card-cover-width: 40%;
+	--item-card-cover-align: flex-end;
+	--item-card-info-width: 40%;
+	--rhs-pos: sticky;
+	--rhs-width: 20%;
+	--header-font-size: 1.2rem;
+}
+@media screen and (max-width: 460px){
+	:root {
+		--item-details-lay-height: auto;
+		--item-details-height: auto;
+		--item-card-cover-width: 90%;
+		--item-card-cover-align: center;
+		--item-card-info-width: 100%;
+		--rhs-pos: none;
+		--rhs-width: 100%;
+		--header-font-size: .8rem;
+	}
+}
+/* 
+* {
+	font-family: 'Open Sans';
+	1rem = 16px as fontsize is set as 1vh
+} */
+
+.HistoryBar {
+	display: flex;
+	height: 4vh;
+	width: 100%;
+	justify-content: flex-start;
+	box-sizing: border-box;
+	z-index: 20;
+	padding: 4px;
+	font-size: var(--header-font-size);
+	box-shadow: 0px 2px 2px 1px #22222229;
 }
 
-@media screen and (max-width: 440px){
-    :root {
-        --item-card-width: 320px;
-        --item-card-height: 24vh;
-        --item-card-cover-width: 150px;
-        --item-card-bookmark-size: 32px;
-    }
-}
-.DetailsItemContainer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    /* align-content: flex-start; */
-    /* flex-wrap: wrap; */
-    width: var(--item-card-width);
-    height: var(--item-card-height);
-    padding: 16px;
-    margin-top: 4vh;
-    font-size: 2vh;
-    background: #FFFFFF;
-    box-shadow: .5px .5px 1px 1px #CCCCCC20;
-    box-sizing: border-box;
-}
-.RHS {
-    position: sticky;
-    width: 20%;
-    height: 100vh;
-    box-shadow: -2px .5px 2px 1px #CCCCCC20;
+.Symbol {	font-weight: 800; }
+.Symbol:hover { cursor: pointer; }
+.clickable { cursor: pointer ;}
+/* .HistoryBar a { font-size: 1.2rem; } */
+.HistorySearch { flex-grow: 1; }
+
+.ItemDetailsContainer {
+	display: flex;
+	/* height: 100%; */
+	width: 100%;
+	flex-wrap: wrap;
 }
 
-.DetailsBookCover {
-    width: var(--item-card-cover-width);
-    min-width: 30vw;
-    max-width: var(--item-card-cover-width);
-    flex: 1;
-    background-size: cover;
-    max-height: 70vh;
-    box-sizing: border-box;
+.ItemDetailsLayout {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	/* align-content: flex-start; */
+	width: 100%;
+	height: var(--item-details-lay-height);
+	padding: 1rem 0;
+	font-size: 2rem;
+	flex-wrap: wrap;
+	background: #ffffff;
+	/* box-shadow: .5px .5px 1px 1px #CCCCCC20; */
+	box-sizing: border-box;
 }
 
-.DetailsBookInfo { 
-    flex: 2; 
-    width: 30vw; 
-    height: var(--item-card-height); 
-    align-items: flex-start;
-    justify-content: space-between;
-    text-align: start;
-    padding: 16px;
-    box-sizing: border-box;
+.ItemCoverContainer {
+	width: var(--item-card-cover-width);
+	min-width: 320px;
+	max-width: var(--item-card-cover-width);
+	height: var(--item-details-height);
+	display: flex;
+	justify-content: var(--item-card-cover-align);
+	padding: 8px;
+	font-size: .4rem;
+	box-sizing: border-box;
 }
 
-.DetailsBookIdentifiers {
-    /* height: 40%; */
-    line-height: 1px;
+.ItemCover {
+	height: inherit;
+	/* width: var(--item-card-cover-width);
+	min-width: 50%;
+	max-width: var(--item-card-cover-width); */
+	/* flex: 1; */
+	background-size: contain;
+	max-height: 70vh;
+	max-width: 92%;
+	box-sizing: border-box;
+	margin: auto 0;
 }
 
-.DetailsBookMeta {
-    height: 20%;
+.ItemInfoContainer {
+	display: flex;
+	height: var(--item-details-height);
+	flex-direction: column;
+	width: var(--item-card-info-width);
+	/* height: var(--item-card-height); */
+	align-items: flex-start;
+	justify-content: space-between;
+	text-align: start;
+	padding: 2rem;
+	box-sizing: border-box;
+	font-size: 1.2rem;
+	/* background-color: inherit;
+	box-shadow: -2px 2px 4px 2px #cccccc60; */
 }
 
-.DetailsBookPricing {
-    height: 20%;
+.ItemIdentifiers {
+	display: flex;
+	flex-direction: column;
+  font-size: 1.1rem;
+  text-align: left;
+  color: #555555;
+	width: 100%;
+	/* line-height: 1px; */
+}
+.title {
+	font-weight: 700;
+	font-size: 1.8rem;
+  letter-spacing: 1px;
+	color: #222222;
+}
+
+.target, .subs {
+	font-size: 1.2rem;
+	font-weight: 300;
+	letter-spacing: -1.25px;
+}
+
+.subs {
+
+}
+
+.meta, .review {
+	width: 100%;
+	letter-spacing: -1.25px;
+}
+
+.mar-tb-8px {
+	margin: 8px 0;
+}
+
+.mar-tb-16px {
+	margin: 16px 0;
+}
+
+.mar-tb-2rem {
+	margin: 2rem 0;
+}
+
+.mar-t-16px {
+	margin: 16px 0 0 0;
+}
+
+.ItemDescription {
+	margin: 8px 0;
+	width: 92%;
+	font-size: 1rem;
+}
+
+.ItemPricing {
+	display: flex;
+	width: 100%;
+	align-items: center;
+	justify-content: flex-start;
+	flex-wrap: wrap;
+}
+
+.itemPrice {
+	font-weight: 400;
+	font-size: 2rem;
+	min-width: 30%;
+	letter-spacing: 1px;
+	word-wrap: none;
+	color: #222222;
+}
+
+.ItemPricing div {
+	margin: 4px 8px;
 }
 
 .DetailsBuyActions {
-    display: flex;
+	display: flex;
+	width: auto;
+	text-align: center;
+	padding: 1rem 0;
+	align-items: flex-end;
+	margin: auto;
 }
 
 .BookMark {
-    width: var(--item-card-bookmark-size); 
-    height: var(--item-card-bookmark-size); 
-    box-sizing: border-box;
-    padding: inherit;
+	width: var(--item-card-bookmark-size);
+	height: var(--item-card-bookmark-size);
+	box-sizing: border-box;
+	padding: inherit;
 }
 
-.DetailsBookReviews {
-    margin-top: 12vh;
-    width: 80vw;
+.ItemSpecs {
+	position: var(--rhs-pos);
+	width: var(--rhs-width);
+	height: var(--item-details-height);
+	padding: 1rem;
+	font-size: 1rem;
+	text-align: start;
+	background-color: inherit;
+	box-shadow: -2px 1px 2px 1px #cccccc60;
+	box-sizing: border-box;
+}
+
+
+.ItemReviewsContainer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+	font-size: 1.2rem;
+	text-align: center;
+	background-color: inherit;
+	box-shadow: 1px 1px 2px 2px #cccccc20;
+}
+
+.ItemReviewsLayout {
+	width: 80%;
+	max-width: 1200px;
 }

@@ -1,6 +1,7 @@
 .Fab {
 	position: sticky;
-	left: 98%;
+	left: 96%;
+	top: 9vh;
 	bottom: 20px;
 	margin-right: 16px;
 	width: 32px;
@@ -28,7 +29,7 @@
 	position: absolute;
   	top: 0;
 	left: 0;
-	font-size: 2vh;
+	font-size: 1.1rem;
 	font-weight: 600;
 	font-stretch: condensed;
 	border-radius: 50%;
