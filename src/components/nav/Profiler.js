@@ -1,12 +1,13 @@
 import React, { Suspense } from 'react'
 import PropTypes from 'prop-types'
-import { Img } from 'the-platform';
+// import { Img } from 'the-platform';
 import Loader from '../helpers/Loader';
+import Img from '../helpers/Img';
 
 // import dummy_img from '../res/imgs/Champ_Small.png';
 
-const dpLQ = 'https://images.unsplash.com/profile-fb-1545496572-b49e6d85b824.jpg?dpr=2&auto=format&fit=crop&w=150&h=150&q=60&crop=faces&bg=fff';
-const dpHQ = 'https://images.unsplash.com/profile-fb-1545496572-b49e6d85b824.jpg?dpr=2&auto=format&fit=crop&w=300&h=300&q=60&crop=faces&bg=fff';
+const dpLQ = 'https://images.unsplash.com/profile-fb-1545496572-b49e6d85b824.jpg?dpr=2&auto=format&fit=crop&w=40&h=45&q=60&crop=faces&bg=fff';
+const dpHQ = 'https://images.unsplash.com/profile-fb-1545496572-b49e6d85b824.jpg?dpr=2&auto=format&fit=crop&w=80&h=90&q=60&crop=faces&bg=fff';
 
 
 

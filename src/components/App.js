@@ -21,7 +21,7 @@ import TempStore from './meh/tempStore';
 const Landing = lazy(() => import('./newer'));
 const Store = lazy(() => import('./store/Store'));
 const ItemDetails = lazy(() => import('./store/ItemDetails'));
-
+const Studio = lazy(() => import('./studio/StudioHome'));
 
 // const Landing = ({ match }) => {
 //   //const location = props.match.path;
@@ -55,88 +55,79 @@ const ItemDetails = lazy(() => import('./store/ItemDetails'));
 // };
 //export default Landing;
 
-const routesNew = [
-  {
+const routesNew = [{
     path: '/',
     exact: true,
     //sidebar: () => <div> Default Route </div>,
-    component: () => <Suspense fallback={(<Loader />)}><Landing /></Suspense>
-  },
-  {
+    component: () => <Suspense fallback={(<Loader />)}><Studio /></Suspense>//<Suspense fallback={(<Loader />)}><Landing /></Suspense>
+  },{
     path: '/login',
     exact: true,
     component: () => <Suspense fallback={(<Loader />)}><Landing /></Suspense>/*(props) => <Landing props={props}/>*/
-  },
-  {
+  },{
     path: '/signup',
     exact: true,
     component: () => <Suspense fallback={(<Loader />)}><Landing /></Suspense>/*(props) => <Landing props={props}/>*/
-  },
-  {
+  },{
     path: '/store',
     exact: true,
     component: () => <Suspense fallback={(<Loader />)}><Store /></Suspense>
-  },
-  {
+  },{
     path: '/store/item',
     exact: false,
     component: () => <Suspense fallback={(<Loader />)}><ItemDetails /></Suspense>
-  },
-  {
-    path: '/store/checkout',
-    exact: true,
-    component: () => <Suspense fallback={(<Loader />)}><ItemDetails /></Suspense>
-  }, {
+  },{
     path: '/tempStore',
     exact: true,
     //sidebar: () => <div> Default Route </div>,
     component: () => <Suspense fallback={(<Loader />)}><TempStore /></Suspense>
-  },
-
+  },{
+    path: '/studio',
+    exact: true,
+    component: () => <Suspense fallback={(<Loader />)}><Studio /></Suspense>
+  }
 ];
-const routesAuth = [
-  {
+
+const routesAuth = [{
     path: '/',
     exact: true,
     //sidebar: () => <div> Default Route </div>,
     component: () => <Suspense fallback={(<Loader />)}><Store /></Suspense>
-  },
-  {
+  },{
     path: '/landed',
     exact: true,
     component: () => <Suspense fallback={(<Loader />)}><Landing /></Suspense>/*(props) => <Landing props={props}/>*/
-  },
-  {
+  },{
     path: '/store',
     exact: true,
     component: () => <Suspense fallback={(<Loader />)}><Store /></Suspense>
-  },
-  {
+  },{
     path: '/store/item',
     exact: false,
     component: () => <Suspense fallback={(<Loader />)}><ItemDetails /></Suspense>
-  },
-  {
+  },{
     path: '/user',
     exact: true,
     component: () => <h2>Profile</h2>
-  },
-  {
+  },{
     path: `/user/dashboard`,
     exact: true,
     component: () => <h2>Dashboard</h2>
-  },
-  {
+  },{
     path: `/user/profile`,
     exact: true,
     component: () => <h2>Profile</h2>
-  },
-  {
+  },{
     path: '/store/checkout',
     exact: true,
     component: () => <Suspense fallback={(<Loader />)}><ItemDetails /></Suspense>
+  },{
+    path: '/studio',
+    exact: true,
+    component: () => <Suspense fallback={(<Loader />)}><Studio /></Suspense>
   }
 ];
+
 let routes = [];
 
 if (!firebase.auth().currentUser) {

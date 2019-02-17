@@ -10,9 +10,7 @@ firebase.initializeApp(FirebaseConfig);
 
 /*################ cloud Firestore Refs and Functions ################ */
 const fs = firebase.firestore();
-fs.settings({
-	timestampsInSnapshots: true
-  });
+
 const userColRef = fs.collection("users");
 export const getUserDocRef = uID => {
 	return userColRef.doc(uID);

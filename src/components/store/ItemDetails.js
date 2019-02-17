@@ -1,7 +1,7 @@
 import React, { Suspense, Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Img } from 'the-platform';
+// import { Img } from 'the-platform';
 import { Link/*, withRouter*/ } from 'react-router-dom'
 /*import { Formik } from 'formik';*/
 
@@ -13,13 +13,14 @@ import './ItemDetails.css'
 import StoreNavBar from './StoreNavBar';
 import BagFab from './BagFab';
 import ReviewsContainer from './ReviewsContainer';
+import Img from '../helpers/Img';
 
 const itemsInBag = 4;
 
 const slickArrow = (<span className="Symbol">🡐</span>)
 // const thickArrow = (<span className="Symbol">🠘</span>)
-const showButton = (<span className="Symbol">▼</span>);
-const hideButton = (<span className="Symbol">△</span>);;
+// const showButton = (<span className="Symbol">▼</span>);
+// const hideButton = (<span className="Symbol">△</span>);;
 
 class ItemDetails extends Component {
   static propTypes = {
@@ -60,11 +61,11 @@ class ItemDetails extends Component {
     showDetails: true,
   }
 
-  toggleDetails = () => {
-    console.log('toggling details', this.state.showDetails)
-    this.setState(prevState => ({ ...prevState, showDetails: !prevState.showDetails }))
-    // console.log('toggled details', this.state.showDetails)
-  }
+  // toggleDetails = () => {
+  //   console.log('toggling details', this.state.showDetails)
+  //   this.setState(prevState => ({ ...prevState, showDetails: !prevState.showDetails }))
+  //   // console.log('toggled details', this.state.showDetails)
+  // }
 
   toggleReviews = () => {
     this.setState(prevState => ({ ...prevState, showReviews: !prevState.showReviews }))
@@ -78,71 +79,80 @@ class ItemDetails extends Component {
   render() {
     let moreDetails = (
       <section className="ItemSpecs">
-        <details>
+        <details open={true}>
           <summary>Table of Contents</summary>
           <h6>I've got stuff</h6>
         </details>
         <hr />
-        <details show={true}>
+        <details open={true}>
           <summary>Active Offers</summary>
           <h6>Here are some amazing offers for you</h6>
         </details>
       </section>
     );
-    
-    let toggleSpecs = (this.state.showDetails ? (
-      <React.Fragment>
-        <span className='active clickable' onClick={() => this.toggleDetails()}>
-          Hide Details {hideButton}
-        </span>
-      </React.Fragment>
-      ):(
-      <React.Fragment>
-        <span className='active clickable' onClick={() => this.toggleDetails()}>
-          Show Details {showButton}
-        </span>
-      </React.Fragment>))
+
+    // let toggleSpecs = (this.state.showDetails ? (
+    //   <React.Fragment>
+    //     <span className='active clickable' onClick={() => this.toggleDetails()}>
+    //       Hide Details {hideButton}
+    //     </span>
+    //   </React.Fragment>
+    //   ):(
+    //   <React.Fragment>
+    //     <span className='active clickable' onClick={() => this.toggleDetails()}>
+    //       Show Details {showButton}
+    //     </span>
+    //   </React.Fragment>))
 
     let reviews = (<ReviewsContainer />);
+
+    const show_imager = true;
+    let imager = (
+      <Suspense fallback={(<Loader className="ItemCover previewtext" text="Getting Your Image" />)}>
+        <Img className="ItemCover loaded" src={this.props.cover} alt="Cover of the book" />
+      </Suspense>
+    )
 
     const itemDetails = (
       <div className="ItemDetailsLayout"><EB>
         <div className="ItemCoverContainer">
-          <Suspense fallback={(<Loader className="ItemCover previewtext" text="Getting Your Image" />)}>
-            <Img className="ItemCover loaded" src={this.props.cover} alt="Cover of the book" />
-          </Suspense>
+          {show_imager ? <Img className="ItemCover loaded" src={this.props.cover} alt="Cover of the book" width={500} height={657}/> : imager}
         </div></EB><EB>
-          <div className="ItemInfoContainer">
-            <div className="ItemIdentifiers">
-              <div>
-                <span className="title">{this.props.title}</span>
-                <div className="subs">{this.props.subject + ' (' + this.props.board + ')'}</div>
-                <span className="target">{this.props.target}</span>
+          <Suspense delayMs={800} fallback={<Loader />}>
+            <div className="ItemInfoContainer">
+              <div className="ItemIdentifiers">
+                <div>
+                  <span className="title">{this.props.title}</span>
+                  <div className="subs">{this.props.subject + ' (' + this.props.board + ')'}</div>
+                  <span className="target">{this.props.target}</span>
+                </div>
+                <div className='mar-tb-2rem'>
+                  <span className="meta">{this.props.pages + " Pages (." + this.props.format + ")"}</span><br />
+                  <span className="review">{"Avg. Rating: " + this.props.rating + " | "}
+                    <a href="#reviews" onClick={() => this.toggleReviews()}>
+                      <span className='active clickable'>{"Read Reviews (" + this.props.reviews + ")"}</span>
+                    </a>
+                  </span>
+                </div>
               </div>
-              <div className='mar-tb-2rem'>
-                <span className="meta">{this.props.pages + " Pages (." + this.props.format + ")"}</span><br />
-                <span className="review">{"Avg. Rating: " + this.props.rating + " | "}
-                  <a href="#reviews" onClick={() => this.toggleReviews()}>
-                    <span className='active clickable'>{"Read Reviews (" + this.props.reviews + ")"}</span>
-                  </a>
-                </span>
+
+              <div className="ItemDescription">
+                <p>{this.props.description}</p>
+                {/*toggleSpecs*/}
+              </div>
+              <div className="ItemPricing mar-t-16px">
+                <span className='itemPrice'>{"₹ " + this.props.price}</span>
+                <div className='DetailsBuyActions mar-t-16px'>
+                  <p className="BackPrimaryInv btnRounded btnOutline AddBag">Add to Bag</p>
+                  <p className="BackPrimary btnRounded QuickBuy">Quick🗲 Buy</p>
+                </div>
               </div>
             </div>
-            
-            <div className="ItemDescription">
-              <p>{this.props.description}</p>
-              {/*toggleSpecs*/}
-            </div>
-            <div className="ItemPricing mar-t-16px">
-              <span className='itemPrice'>{"₹ " + this.props.price}</span>
-              <div className='DetailsBuyActions mar-t-16px'>
-                <p className="BackPrimaryInv btnRounded btnOutline AddBag">Add to Bag</p>
-                <p className="BackPrimary btnRounded QuickBuy">Quick Buy</p>
-              </div>
-            </div>
-          </div>
+          </Suspense>
           {/*<img className="DetailsBookMark" src={bookmark} alt="toggle button for bookmarking the store items" />*/}</EB><EB>
-          {this.state.showDetails && moreDetails}</EB>
+          <Suspense delayMs={800} fallback={<Loader />}>
+            {this.state.showDetails && moreDetails}
+          </Suspense></EB>
       </div>
     );
 

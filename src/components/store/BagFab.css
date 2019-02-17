@@ -2,10 +2,10 @@
 	position: sticky;
 	left: 96%;
 	top: 9vh;
-	bottom: 20px;
-	margin-right: 16px;
-	width: 32px;
-	height: 32px;
+	bottom: 1rem;
+	margin-right: 1rem;
+	width: 4rem;
+	height: 4rem;
 	display: inline-block;
 	background-color: #2d65ff;
 	text-decoration: none;

@@ -31,16 +31,16 @@
 	height: 4vh;
 	width: 100%;
 	justify-content: flex-start;
-	box-sizing: border-box;
-	z-index: 20;
+	/* box-sizing: border-box; */
 	padding: 4px;
 	font-size: var(--header-font-size);
+	background-color: #fff;
 	box-shadow: 0px 2px 2px 1px #22222229;
+	z-index: 20;
 }
 
 .Symbol {	font-weight: 800; }
 .Symbol:hover { cursor: pointer; }
-.clickable { cursor: pointer ;}
 /* .HistoryBar a { font-size: 1.2rem; } */
 .HistorySearch { flex-grow: 1; }
 
