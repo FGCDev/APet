@@ -84,13 +84,13 @@
   text-transform: uppercase;
   color: #fff;
   font-weight: 700;
-  top: -19px;
-  left: 1rem;
+  top: -16px;
+  left: .5rem;
   background: #100e1799;
   padding: 0 .5rem;
   font-size: .6rem;
   position: absolute;
-  z-index: 1;
+  z-index: 2;
 }
 
 .panelBtn {
